@@ -22,14 +22,16 @@ public partial class OverlayWindow : Window, IDisposable
     private readonly Dictionary<string, BitmapImage> _albumArtCache = new(StringComparer.Ordinal);
     private readonly Dictionary<string, string> _lyricsTranslationCache = new(StringComparer.Ordinal);
     private readonly LrclibLyricsService _lyricsService = new();
-    private readonly DeepLTranslationService _translationService = new();
     private readonly ToolTip _lyricsTranslationToolTip = new();
+    private ITranslationService _translationService = new DeepLTranslationService();
     private string? _requestedAlbumImageUrl;
     private PlaybackTrack? _currentTrack;
     private CancellationTokenSource? _karaokeLoadCancellation;
     private CancellationTokenSource? _lyricsTranslationCancellation;
-    private string _deepLApiKey = string.Empty;
-    private string _deepLTargetLanguage = "RU";
+    private TranslationProvider _translationProvider = TranslationProvider.DeepL;
+    private string _translationApiKey = string.Empty;
+    private string _translationTargetLanguage = "RU";
+    private Uri? _translationEndpoint;
     private bool _isHistoryExpanded;
     private bool _isKaraokeExpanded;
     private bool _disposed;
@@ -41,23 +43,43 @@ public partial class OverlayWindow : Window, IDisposable
     public event EventHandler<TrackRequestedEventArgs>? CachedTrackPlayRequested;
     public event EventHandler<TrackRequestedEventArgs>? CachedTrackFavoriteRequested;
 
-    public OverlayWindow(string? deepLApiKey = null, string? deepLTargetLanguage = null)
+    public OverlayWindow(
+        TranslationProvider translationProvider = TranslationProvider.DeepL,
+        string? deepLApiKey = null,
+        string? libreTranslateApiKey = null,
+        string? libreTranslateEndpoint = null,
+        string? targetLanguage = null)
     {
         InitializeComponent();
         CachedTracksList.ItemsSource = _cachedTracks;
-        SetTranslationSettings(deepLApiKey, deepLTargetLanguage);
+        SetTranslationSettings(translationProvider, deepLApiKey, libreTranslateApiKey, libreTranslateEndpoint, targetLanguage);
         _lyricsTranslationToolTip.Placement = PlacementMode.MousePoint;
         _lyricsTranslationToolTip.PlacementTarget = PlainLyricsText;
         _lyricsTranslationToolTip.StaysOpen = false;
         ShowMessage("Overlay готов", "Жду текущий трек");
     }
 
-    public void SetTranslationSettings(string? apiKey, string? targetLanguage)
+    public void SetTranslationSettings(
+        TranslationProvider translationProvider,
+        string? deepLApiKey,
+        string? libreTranslateApiKey,
+        string? libreTranslateEndpoint,
+        string? targetLanguage)
     {
-        _deepLApiKey = apiKey ?? string.Empty;
-        _deepLTargetLanguage = string.IsNullOrWhiteSpace(targetLanguage)
+        _translationProvider = translationProvider;
+        _translationService = translationProvider == TranslationProvider.LibreTranslate
+            ? new LibreTranslationService()
+            : new DeepLTranslationService();
+        _translationApiKey = translationProvider == TranslationProvider.LibreTranslate
+            ? libreTranslateApiKey ?? string.Empty
+            : deepLApiKey ?? string.Empty;
+        _translationTargetLanguage = string.IsNullOrWhiteSpace(targetLanguage)
             ? "RU"
             : targetLanguage.Trim().ToUpperInvariant();
+        _translationEndpoint = Uri.TryCreate(libreTranslateEndpoint, UriKind.Absolute, out var endpoint)
+            ? endpoint
+            : null;
+        _lyricsTranslationCache.Clear();
     }
 
     public void ShowTrack(PlaybackTrack track)
@@ -344,7 +366,7 @@ public partial class OverlayWindow : Window, IDisposable
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(_deepLApiKey))
+        if (_translationProvider == TranslationProvider.DeepL && string.IsNullOrWhiteSpace(_translationApiKey))
         {
             ShowLyricsTranslationToolTip("DeepL API key не указан в настройках.");
             return;
@@ -360,14 +382,16 @@ public partial class OverlayWindow : Window, IDisposable
         try
         {
             await Task.Delay(350, cancellationToken);
-            var cacheKey = $"{_deepLTargetLanguage}\n{text}";
+            var cacheKey = $"{_translationService.DisplayName}\n{_translationTargetLanguage}\n{text}";
             if (_lyricsTranslationCache.TryGetValue(cacheKey, out var cachedTranslation))
             {
                 ShowLyricsTranslationToolTip(cachedTranslation);
                 return;
             }
 
-            var translated = await _translationService.TranslateAsync(_deepLApiKey, text, _deepLTargetLanguage, cancellationToken);
+            var translated = await _translationService.TranslateAsync(
+                new TranslationRequest(text, _translationTargetLanguage, _translationApiKey, _translationEndpoint),
+                cancellationToken);
             if (!cancellationToken.IsCancellationRequested && !string.IsNullOrWhiteSpace(translated))
             {
                 _lyricsTranslationCache[cacheKey] = translated;

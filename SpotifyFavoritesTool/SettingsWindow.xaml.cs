@@ -23,14 +23,20 @@ public partial class SettingsWindow : Window
         _favoriteStatusHotkeyDisplayName = GetHotkeyDisplayName(_favoriteStatusHotkeyVirtualKey, _settings.Current.FavoriteStatusHotkeyDisplayName);
 
         ClientIdBox.Text = _settings.Current.ClientId;
+        TranslationProviderBox.SelectedIndex = _settings.Current.TranslationProvider == TranslationProvider.LibreTranslate ? 1 : 0;
         DeepLApiKeyBox.Text = _settings.Current.DeepLApiKey;
         DeepLTargetLanguageBox.Text = string.IsNullOrWhiteSpace(_settings.Current.DeepLTargetLanguage)
             ? "RU"
             : _settings.Current.DeepLTargetLanguage;
+        LibreTranslateEndpointBox.Text = string.IsNullOrWhiteSpace(_settings.Current.LibreTranslateEndpoint)
+            ? "https://libretranslate.com/translate"
+            : _settings.Current.LibreTranslateEndpoint;
+        LibreTranslateApiKeyBox.Text = _settings.Current.LibreTranslateApiKey;
         RedirectUriBox.Text = SpotifyAuthService.RedirectUri;
         FavoriteHotkeyBox.Text = _favoriteHotkeyDisplayName;
         FavoriteStatusHotkeyBox.Text = _favoriteStatusHotkeyDisplayName;
         UpdateStatus();
+        UpdateTranslationProviderFields();
     }
 
     public event EventHandler? AuthChanged;
@@ -87,6 +93,11 @@ public partial class SettingsWindow : Window
     private void CloseButton_Click(object sender, RoutedEventArgs e)
     {
         Close();
+    }
+
+    private void TranslationProviderBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+    {
+        UpdateTranslationProviderFields();
     }
 
     private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -188,16 +199,35 @@ public partial class SettingsWindow : Window
         }
 
         _settings.Current.ClientId = ClientIdBox.Text.Trim();
+        _settings.Current.TranslationProvider = TranslationProviderBox.SelectedIndex == 1
+            ? TranslationProvider.LibreTranslate
+            : TranslationProvider.DeepL;
         _settings.Current.DeepLApiKey = DeepLApiKeyBox.Text.Trim();
         _settings.Current.DeepLTargetLanguage = string.IsNullOrWhiteSpace(DeepLTargetLanguageBox.Text)
             ? "RU"
             : DeepLTargetLanguageBox.Text.Trim().ToUpperInvariant();
+        _settings.Current.LibreTranslateEndpoint = string.IsNullOrWhiteSpace(LibreTranslateEndpointBox.Text)
+            ? "https://libretranslate.com/translate"
+            : LibreTranslateEndpointBox.Text.Trim();
+        _settings.Current.LibreTranslateApiKey = LibreTranslateApiKeyBox.Text.Trim();
         _settings.Current.LikeHotkeyVirtualKey = _favoriteHotkeyVirtualKey;
         _settings.Current.LikeHotkeyDisplayName = GetHotkeyDisplayName(_favoriteHotkeyVirtualKey, _favoriteHotkeyDisplayName);
         _settings.Current.FavoriteStatusHotkeyVirtualKey = _favoriteStatusHotkeyVirtualKey;
         _settings.Current.FavoriteStatusHotkeyDisplayName = GetHotkeyDisplayName(_favoriteStatusHotkeyVirtualKey, _favoriteStatusHotkeyDisplayName);
         _settings.Save();
         return true;
+    }
+
+    private void UpdateTranslationProviderFields()
+    {
+        if (DeepLApiKeyBox is null || LibreTranslatePanel is null)
+        {
+            return;
+        }
+
+        var isLibre = TranslationProviderBox.SelectedIndex == 1;
+        DeepLApiKeyBox.Visibility = isLibre ? Visibility.Collapsed : Visibility.Visible;
+        LibreTranslatePanel.Visibility = isLibre ? Visibility.Visible : Visibility.Collapsed;
     }
 
     private void UpdateStatus(string? prefix = null)

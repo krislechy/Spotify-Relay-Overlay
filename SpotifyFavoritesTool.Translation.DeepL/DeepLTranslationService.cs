@@ -5,47 +5,45 @@ using System.Text.Json.Serialization;
 
 namespace SpotifyFavoritesTool;
 
-public sealed class DeepLTranslationService
+public sealed class DeepLTranslationService : ITranslationService
 {
-    private const string TranslateEndpoint = "https://api-free.deepl.com/v2/translate";
+    private static readonly Uri TranslateEndpoint = new("https://api-free.deepl.com/v2/translate");
     private static readonly HttpClient Http = new();
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNameCaseInsensitive = true
     };
 
-    public async Task<string> TranslateAsync(
-        string authKey,
-        string text,
-        string targetLanguage = "RU",
-        CancellationToken cancellationToken = default)
+    public string DisplayName => "DeepL";
+
+    public async Task<string> TranslateAsync(TranslationRequest request, CancellationToken cancellationToken = default)
     {
-        if (string.IsNullOrWhiteSpace(authKey))
+        if (string.IsNullOrWhiteSpace(request.ApiKey))
         {
             throw new InvalidOperationException("DeepL API key не указан.");
         }
 
-        if (string.IsNullOrWhiteSpace(text))
+        if (string.IsNullOrWhiteSpace(request.Text))
         {
             return string.Empty;
         }
 
-        using var request = new HttpRequestMessage(HttpMethod.Post, TranslateEndpoint);
-        request.Headers.Authorization = new AuthenticationHeaderValue("DeepL-Auth-Key", authKey.Trim());
-        request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
+        using var httpRequest = new HttpRequestMessage(HttpMethod.Post, TranslateEndpoint);
+        httpRequest.Headers.Authorization = new AuthenticationHeaderValue("DeepL-Auth-Key", request.ApiKey.Trim());
+        httpRequest.Content = new FormUrlEncodedContent(new Dictionary<string, string>
         {
-            ["text"] = text,
-            ["target_lang"] = targetLanguage
+            ["text"] = request.Text,
+            ["target_lang"] = request.TargetLanguage
         });
 
-        using var response = await Http.SendAsync(request, cancellationToken);
+        using var response = await Http.SendAsync(httpRequest, cancellationToken);
         var responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
         if (!response.IsSuccessStatusCode)
         {
             throw CreateException(response.StatusCode, responseBody);
         }
 
-        var result = JsonSerializer.Deserialize<TranslationResponse>(responseBody, JsonOptions);
+        var result = JsonSerializer.Deserialize<DeepLTranslationResponse>(responseBody, JsonOptions);
         return result?.Translations?.FirstOrDefault()?.Text ?? string.Empty;
     }
 
@@ -59,13 +57,13 @@ public sealed class DeepLTranslationService
         };
     }
 
-    private sealed class TranslationResponse
+    private sealed class DeepLTranslationResponse
     {
         [JsonPropertyName("translations")]
-        public TranslationItem[]? Translations { get; set; }
+        public DeepLTranslationItem[]? Translations { get; set; }
     }
 
-    private sealed class TranslationItem
+    private sealed class DeepLTranslationItem
     {
         [JsonPropertyName("text")]
         public string? Text { get; set; }
