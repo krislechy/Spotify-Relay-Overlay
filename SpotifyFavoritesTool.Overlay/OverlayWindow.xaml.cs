@@ -53,7 +53,7 @@ public partial class OverlayWindow : Window, IDisposable
         InitializeComponent();
         CachedTracksList.ItemsSource = _cachedTracks;
         SetTranslationSettings(translationProvider, deepLApiKey, libreTranslateApiKey, libreTranslateEndpoint, targetLanguage);
-        _lyricsTranslationToolTip.Placement = PlacementMode.MousePoint;
+        _lyricsTranslationToolTip.Placement = PlacementMode.Relative;
         _lyricsTranslationToolTip.PlacementTarget = PlainLyricsText;
         _lyricsTranslationToolTip.StaysOpen = false;
         ShowMessage("Overlay готов", "Жду текущий трек");
@@ -371,16 +371,16 @@ public partial class OverlayWindow : Window, IDisposable
 
         if (_translationProvider == TranslationProvider.DeepL && string.IsNullOrWhiteSpace(_translationApiKey))
         {
-            ShowLyricsTranslationToolTip("DeepL API key не указан в настройках.");
+            ShowLyricsTranslationToolTip("DeepL API key не указан в настройках.", PlainLyricsText.SelectionStart);
             return;
         }
 
         _lyricsTranslationCancellation?.Dispose();
         _lyricsTranslationCancellation = new CancellationTokenSource();
-        _ = TranslateSelectedLyricsAsync(selectedText, _lyricsTranslationCancellation.Token);
+        _ = TranslateSelectedLyricsAsync(selectedText, PlainLyricsText.SelectionStart, _lyricsTranslationCancellation.Token);
     }
 
-    private async Task TranslateSelectedLyricsAsync(string text, CancellationToken cancellationToken)
+    private async Task TranslateSelectedLyricsAsync(string text, int selectionStart, CancellationToken cancellationToken)
     {
         try
         {
@@ -388,7 +388,7 @@ public partial class OverlayWindow : Window, IDisposable
             var cacheKey = $"{_translationService.DisplayName}\n{_translationTargetLanguage}\n{text}";
             if (_lyricsTranslationCache.TryGetValue(cacheKey, out var cachedTranslation))
             {
-                ShowLyricsTranslationToolTip(cachedTranslation);
+                ShowLyricsTranslationToolTip(cachedTranslation, selectionStart);
                 return;
             }
 
@@ -398,7 +398,7 @@ public partial class OverlayWindow : Window, IDisposable
             if (!cancellationToken.IsCancellationRequested && !string.IsNullOrWhiteSpace(translated))
             {
                 _lyricsTranslationCache[cacheKey] = translated;
-                ShowLyricsTranslationToolTip(translated);
+                ShowLyricsTranslationToolTip(translated, selectionStart);
             }
         }
         catch (OperationCanceledException)
@@ -406,11 +406,11 @@ public partial class OverlayWindow : Window, IDisposable
         }
         catch (Exception ex)
         {
-            ShowLyricsTranslationToolTip(ex.Message);
+            ShowLyricsTranslationToolTip(ex.Message, selectionStart);
         }
     }
 
-    private void ShowLyricsTranslationToolTip(string text)
+    private void ShowLyricsTranslationToolTip(string text, int selectionStart)
     {
         _lyricsTranslationToolTip.Content = new TextBlock
         {
@@ -418,9 +418,23 @@ public partial class OverlayWindow : Window, IDisposable
             TextWrapping = TextWrapping.Wrap,
             MaxWidth = 360
         };
-        _lyricsTranslationToolTip.Placement = PlacementMode.MousePoint;
-        _lyricsTranslationToolTip.PlacementTarget = PlainLyricsText;
+        SetLyricsTranslationToolTipPlacement(selectionStart);
         _lyricsTranslationToolTip.IsOpen = true;
+    }
+
+    private void SetLyricsTranslationToolTipPlacement(int selectionStart)
+    {
+        var characterIndex = Math.Clamp(selectionStart, 0, Math.Max(PlainLyricsText.Text.Length - 1, 0));
+        var selectionRect = PlainLyricsText.GetRectFromCharacterIndex(characterIndex, trailingEdge: false);
+        if (selectionRect.IsEmpty)
+        {
+            selectionRect = new Rect(0, 0, 0, 0);
+        }
+
+        _lyricsTranslationToolTip.Placement = PlacementMode.Relative;
+        _lyricsTranslationToolTip.PlacementTarget = PlainLyricsText;
+        _lyricsTranslationToolTip.HorizontalOffset = Math.Max(0, selectionRect.Left);
+        _lyricsTranslationToolTip.VerticalOffset = Math.Max(0, selectionRect.Bottom + 6);
     }
 
     private void AlbumArt_ImageFailed(object sender, ExceptionRoutedEventArgs e)
