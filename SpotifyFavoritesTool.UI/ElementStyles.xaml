@@ -263,6 +263,7 @@
                     <Grid>
                         <ToggleButton x:Name="DropDownToggle"
                                       Background="{TemplateBinding Background}"
+                                      Foreground="{TemplateBinding Foreground}"
                                       BorderBrush="{TemplateBinding BorderBrush}"
                                       BorderThickness="{TemplateBinding BorderThickness}"
                                       Padding="{TemplateBinding Padding}"
@@ -315,6 +316,7 @@
                                               ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
                                               ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                               Margin="{TemplateBinding Padding}"
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Stretch" />
                         </ToggleButton>
