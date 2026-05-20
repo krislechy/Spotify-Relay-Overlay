@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
@@ -19,10 +20,16 @@ public partial class OverlayWindow : Window, IDisposable
 
     private readonly ObservableCollection<OverlayTrackListItem> _cachedTracks = [];
     private readonly Dictionary<string, BitmapImage> _albumArtCache = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, string> _lyricsTranslationCache = new(StringComparer.Ordinal);
     private readonly LrclibLyricsService _lyricsService = new();
+    private readonly DeepLTranslationService _translationService = new();
+    private readonly ToolTip _lyricsTranslationToolTip = new();
     private string? _requestedAlbumImageUrl;
     private PlaybackTrack? _currentTrack;
     private CancellationTokenSource? _karaokeLoadCancellation;
+    private CancellationTokenSource? _lyricsTranslationCancellation;
+    private string _deepLApiKey = string.Empty;
+    private string _deepLTargetLanguage = "RU";
     private bool _isHistoryExpanded;
     private bool _isKaraokeExpanded;
     private bool _disposed;
@@ -34,11 +41,23 @@ public partial class OverlayWindow : Window, IDisposable
     public event EventHandler<TrackRequestedEventArgs>? CachedTrackPlayRequested;
     public event EventHandler<TrackRequestedEventArgs>? CachedTrackFavoriteRequested;
 
-    public OverlayWindow()
+    public OverlayWindow(string? deepLApiKey = null, string? deepLTargetLanguage = null)
     {
         InitializeComponent();
         CachedTracksList.ItemsSource = _cachedTracks;
+        SetTranslationSettings(deepLApiKey, deepLTargetLanguage);
+        _lyricsTranslationToolTip.Placement = PlacementMode.MousePoint;
+        _lyricsTranslationToolTip.PlacementTarget = PlainLyricsText;
+        _lyricsTranslationToolTip.StaysOpen = false;
         ShowMessage("Overlay готов", "Жду текущий трек");
+    }
+
+    public void SetTranslationSettings(string? apiKey, string? targetLanguage)
+    {
+        _deepLApiKey = apiKey ?? string.Empty;
+        _deepLTargetLanguage = string.IsNullOrWhiteSpace(targetLanguage)
+            ? "RU"
+            : targetLanguage.Trim().ToUpperInvariant();
     }
 
     public void ShowTrack(PlaybackTrack track)
@@ -101,9 +120,13 @@ public partial class OverlayWindow : Window, IDisposable
         _disposed = true;
         AlbumArt.Source = null;
         _albumArtCache.Clear();
+        _lyricsTranslationCache.Clear();
         _cachedTracks.Clear();
         _karaokeLoadCancellation?.Cancel();
         _karaokeLoadCancellation?.Dispose();
+        _lyricsTranslationCancellation?.Cancel();
+        _lyricsTranslationCancellation?.Dispose();
+        _lyricsTranslationToolTip.IsOpen = false;
         FavoriteRequested = null;
         PreviousRequested = null;
         PlayPauseRequested = null;
@@ -287,6 +310,9 @@ public partial class OverlayWindow : Window, IDisposable
 
     private void ShowLyrics(KaraokeLyrics lyrics)
     {
+        _lyricsTranslationCancellation?.Cancel();
+        _lyricsTranslationToolTip.IsOpen = false;
+
         if (!string.IsNullOrWhiteSpace(lyrics.DisplayText))
         {
             PlainLyricsText.Text = lyrics.DisplayText;
@@ -303,6 +329,71 @@ public partial class OverlayWindow : Window, IDisposable
     private void CancelLyricsLoad()
     {
         _karaokeLoadCancellation?.Cancel();
+        _lyricsTranslationCancellation?.Cancel();
+        _lyricsTranslationToolTip.IsOpen = false;
+    }
+
+    private void PlainLyricsText_SelectionChanged(object sender, RoutedEventArgs e)
+    {
+        var selectedText = PlainLyricsText.SelectedText?.Trim();
+        _lyricsTranslationCancellation?.Cancel();
+        _lyricsTranslationToolTip.IsOpen = false;
+
+        if (string.IsNullOrWhiteSpace(selectedText) || selectedText.Length < 2)
+        {
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(_deepLApiKey))
+        {
+            ShowLyricsTranslationToolTip("DeepL API key не указан в настройках.");
+            return;
+        }
+
+        _lyricsTranslationCancellation?.Dispose();
+        _lyricsTranslationCancellation = new CancellationTokenSource();
+        _ = TranslateSelectedLyricsAsync(selectedText, _lyricsTranslationCancellation.Token);
+    }
+
+    private async Task TranslateSelectedLyricsAsync(string text, CancellationToken cancellationToken)
+    {
+        try
+        {
+            await Task.Delay(350, cancellationToken);
+            var cacheKey = $"{_deepLTargetLanguage}\n{text}";
+            if (_lyricsTranslationCache.TryGetValue(cacheKey, out var cachedTranslation))
+            {
+                ShowLyricsTranslationToolTip(cachedTranslation);
+                return;
+            }
+
+            var translated = await _translationService.TranslateAsync(_deepLApiKey, text, _deepLTargetLanguage, cancellationToken);
+            if (!cancellationToken.IsCancellationRequested && !string.IsNullOrWhiteSpace(translated))
+            {
+                _lyricsTranslationCache[cacheKey] = translated;
+                ShowLyricsTranslationToolTip(translated);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+        }
+        catch (Exception ex)
+        {
+            ShowLyricsTranslationToolTip(ex.Message);
+        }
+    }
+
+    private void ShowLyricsTranslationToolTip(string text)
+    {
+        _lyricsTranslationToolTip.Content = new TextBlock
+        {
+            Text = text,
+            TextWrapping = TextWrapping.Wrap,
+            MaxWidth = 360
+        };
+        _lyricsTranslationToolTip.Placement = PlacementMode.MousePoint;
+        _lyricsTranslationToolTip.PlacementTarget = PlainLyricsText;
+        _lyricsTranslationToolTip.IsOpen = true;
     }
 
     private void AlbumArt_ImageFailed(object sender, ExceptionRoutedEventArgs e)

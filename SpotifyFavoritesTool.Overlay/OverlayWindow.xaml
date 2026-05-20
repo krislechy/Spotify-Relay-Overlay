@@ -745,12 +745,18 @@
                                   VerticalScrollBarVisibility="Auto"
                                   HorizontalScrollBarVisibility="Disabled"
                                   CanContentScroll="False">
-                        <TextBlock x:Name="PlainLyricsText"
-                                   Visibility="Collapsed"
-                                   Foreground="#D7E4DC"
-                                   FontSize="12.5"
-                                   LineHeight="19"
-                                   TextWrapping="Wrap" />
+                        <TextBox x:Name="PlainLyricsText"
+                                 Visibility="Collapsed"
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="True"
+                                 IsReadOnly="True"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 Foreground="#D7E4DC"
+                                 FontSize="12.5"
+                                 Padding="0"
+                                 IsTabStop="False"
+                                 SelectionChanged="PlainLyricsText_SelectionChanged" />
                     </ScrollViewer>
                 </Grid>
             </ui:LiquidHoverBorder>

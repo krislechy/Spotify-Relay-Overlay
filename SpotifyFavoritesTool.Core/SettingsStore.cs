@@ -38,6 +38,7 @@ public sealed class SettingsStore
         Directory.CreateDirectory(SettingsDirectory);
         Current.ProtectedAccessToken = WindowsDataProtection.Protect(Current.AccessToken);
         Current.ProtectedRefreshToken = WindowsDataProtection.Protect(Current.RefreshToken);
+        Current.ProtectedDeepLApiKey = WindowsDataProtection.Protect(Current.DeepLApiKey);
         var json = JsonSerializer.Serialize(Current, JsonOptions);
         File.WriteAllText(SettingsPath, json);
     }
@@ -72,6 +73,7 @@ public sealed class SettingsStore
 
             settings.AccessToken = WindowsDataProtection.Unprotect(settings.ProtectedAccessToken);
             settings.RefreshToken = WindowsDataProtection.Unprotect(settings.ProtectedRefreshToken);
+            settings.DeepLApiKey = WindowsDataProtection.Unprotect(settings.ProtectedDeepLApiKey);
 
             if (string.IsNullOrEmpty(settings.AccessToken) && TryGetString(root, "AccessToken", out var legacyAccessToken))
             {

@@ -171,6 +171,7 @@ public partial class MainWindow : Window
         _settingsWindow.SettingsChanged += (_, _) =>
         {
             RegisterHotkeys();
+            _overlayWindow?.SetTranslationSettings(_settings.Current.DeepLApiKey, _settings.Current.DeepLTargetLanguage);
             StartTrackMonitorIfReady();
             UpdateStatus("Настройки сохранены.");
             Log("Настройки сохранены.");
@@ -344,7 +345,7 @@ public partial class MainWindow : Window
 
     private void OpenOverlayWindow()
     {
-        _overlayWindow = new OverlayWindow();
+        _overlayWindow = new OverlayWindow(_settings.Current.DeepLApiKey, _settings.Current.DeepLTargetLanguage);
         SubscribeOverlayEvents(_overlayWindow);
         _overlayWindow.SetTrackList(new OverlayTrackList("Очередь Spotify", Array.Empty<OverlayTrackListItem>(), IsPlaybackContext: true));
         ShowInitialOverlayContent(_overlayWindow);

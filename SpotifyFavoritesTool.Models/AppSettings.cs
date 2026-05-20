@@ -12,8 +12,13 @@ public sealed class AppSettings
     [JsonIgnore]
     public string RefreshToken { get; set; } = string.Empty;
 
+    [JsonIgnore]
+    public string DeepLApiKey { get; set; } = string.Empty;
+
     public string ProtectedAccessToken { get; set; } = string.Empty;
     public string ProtectedRefreshToken { get; set; } = string.Empty;
+    public string ProtectedDeepLApiKey { get; set; } = string.Empty;
+    public string DeepLTargetLanguage { get; set; } = "RU";
     public string GrantedScopes { get; set; } = string.Empty;
     public DateTimeOffset AccessTokenExpiresAt { get; set; } = DateTimeOffset.MinValue;
     public double? WindowLeft { get; set; }

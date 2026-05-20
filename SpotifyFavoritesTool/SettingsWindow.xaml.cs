@@ -23,6 +23,10 @@ public partial class SettingsWindow : Window
         _favoriteStatusHotkeyDisplayName = GetHotkeyDisplayName(_favoriteStatusHotkeyVirtualKey, _settings.Current.FavoriteStatusHotkeyDisplayName);
 
         ClientIdBox.Text = _settings.Current.ClientId;
+        DeepLApiKeyBox.Text = _settings.Current.DeepLApiKey;
+        DeepLTargetLanguageBox.Text = string.IsNullOrWhiteSpace(_settings.Current.DeepLTargetLanguage)
+            ? "RU"
+            : _settings.Current.DeepLTargetLanguage;
         RedirectUriBox.Text = SpotifyAuthService.RedirectUri;
         FavoriteHotkeyBox.Text = _favoriteHotkeyDisplayName;
         FavoriteStatusHotkeyBox.Text = _favoriteStatusHotkeyDisplayName;
@@ -184,6 +188,10 @@ public partial class SettingsWindow : Window
         }
 
         _settings.Current.ClientId = ClientIdBox.Text.Trim();
+        _settings.Current.DeepLApiKey = DeepLApiKeyBox.Text.Trim();
+        _settings.Current.DeepLTargetLanguage = string.IsNullOrWhiteSpace(DeepLTargetLanguageBox.Text)
+            ? "RU"
+            : DeepLTargetLanguageBox.Text.Trim().ToUpperInvariant();
         _settings.Current.LikeHotkeyVirtualKey = _favoriteHotkeyVirtualKey;
         _settings.Current.LikeHotkeyDisplayName = GetHotkeyDisplayName(_favoriteHotkeyVirtualKey, _favoriteHotkeyDisplayName);
         _settings.Current.FavoriteStatusHotkeyVirtualKey = _favoriteStatusHotkeyVirtualKey;

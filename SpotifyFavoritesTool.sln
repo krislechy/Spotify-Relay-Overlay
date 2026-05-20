@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyFavoritesTool.Overla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyFavoritesTool.Karaoke", "SpotifyFavoritesTool.Karaoke\SpotifyFavoritesTool.Karaoke.csproj", "{081BE085-C706-41B3-9213-B449234C6056}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyFavoritesTool.Translation", "SpotifyFavoritesTool.Translation\SpotifyFavoritesTool.Translation.csproj", "{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,18 @@ Global
 		{081BE085-C706-41B3-9213-B449234C6056}.Release|x64.Build.0 = Release|Any CPU
 		{081BE085-C706-41B3-9213-B449234C6056}.Release|x86.ActiveCfg = Release|Any CPU
 		{081BE085-C706-41B3-9213-B449234C6056}.Release|x86.Build.0 = Release|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Debug|x64.Build.0 = Debug|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Debug|x86.Build.0 = Debug|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Release|x64.ActiveCfg = Release|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Release|x64.Build.0 = Release|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Release|x86.ActiveCfg = Release|Any CPU
+		{80C0F0E4-E648-4E09-9AC4-BEC376A51B21}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
