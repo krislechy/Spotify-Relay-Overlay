@@ -1,0 +1,157 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Centralized project palette. Use AppColor* for Color properties and AppBrush* for Brush properties. -->
+    <Color x:Key="AppColor000000">#000000</Color>
+    <Color x:Key="AppColor00000000">#00000000</Color>
+    <Color x:Key="AppColor00141B17">#00141B17</Color>
+    <Color x:Key="AppColor001ED760">#001ED760</Color>
+    <Color x:Key="AppColor05150C">#05150C</Color>
+    <Color x:Key="AppColor0D7A39">#0D7A39</Color>
+    <Color x:Key="AppColor0F1511">#0F1511</Color>
+    <Color x:Key="AppColor101512">#101512</Color>
+    <Color x:Key="AppColor111714">#111714</Color>
+    <Color x:Key="AppColor141B17">#141B17</Color>
+    <Color x:Key="AppColor171D19">#171D19</Color>
+    <Color x:Key="AppColor17201B">#17201B</Color>
+    <Color x:Key="AppColor18201B">#18201B</Color>
+    <Color x:Key="AppColor18B653">#18B653</Color>
+    <Color x:Key="AppColor1B2920">#1B2920</Color>
+    <Color x:Key="AppColor1B3D2A">#1B3D2A</Color>
+    <Color x:Key="AppColor1ED760">#1ED760</Color>
+    <Color x:Key="AppColor1F2B24">#1F2B24</Color>
+    <Color x:Key="AppColor202824">#202824</Color>
+    <Color x:Key="AppColor202A24">#202A24</Color>
+    <Color x:Key="AppColor203228">#203228</Color>
+    <Color x:Key="AppColor203A29">#203A29</Color>
+    <Color x:Key="AppColor221B241F">#221B241F</Color>
+    <Color x:Key="AppColor241E2A24">#241E2A24</Color>
+    <Color x:Key="AppColor243027">#243027</Color>
+    <Color x:Key="AppColor244F35">#244F35</Color>
+    <Color x:Key="AppColor25342C">#25342C</Color>
+    <Color x:Key="AppColor26362D">#26362D</Color>
+    <Color x:Key="AppColor263E4F43">#263E4F43</Color>
+    <Color x:Key="AppColor28362E">#28362E</Color>
+    <Color x:Key="AppColor2A342D">#2A342D</Color>
+    <Color x:Key="AppColor2A3A31">#2A3A31</Color>
+    <Color x:Key="AppColor2B3A32">#2B3A32</Color>
+    <Color x:Key="AppColor314638">#314638</Color>
+    <Color x:Key="AppColor32483C">#32483C</Color>
+    <Color x:Key="AppColor334139">#334139</Color>
+    <Color x:Key="AppColor338DE6B1">#338DE6B1</Color>
+    <Color x:Key="AppColor365142">#365142</Color>
+    <Color x:Key="AppColor3D4B42">#3D4B42</Color>
+    <Color x:Key="AppColor40202A24">#40202A24</Color>
+    <Color x:Key="AppColor4936D87B">#4936D87B</Color>
+    <Color x:Key="AppColor4E6357">#4E6357</Color>
+    <Color x:Key="AppColor5AF0A0">#5AF0A0</Color>
+    <Color x:Key="AppColor66141B17">#66141B17</Color>
+    <Color x:Key="AppColor661ED760">#661ED760</Color>
+    <Color x:Key="AppColor668DE6B1">#668DE6B1</Color>
+    <Color x:Key="AppColor6F7D74">#6F7D74</Color>
+    <Color x:Key="AppColor708DE6B1">#708DE6B1</Color>
+    <Color x:Key="AppColor77847C">#77847C</Color>
+    <Color x:Key="AppColor789181">#789181</Color>
+    <Color x:Key="AppColor789183">#789183</Color>
+    <Color x:Key="AppColor7F8D84">#7F8D84</Color>
+    <Color x:Key="AppColor7F9A8A">#7F9A8A</Color>
+    <Color x:Key="AppColor8CA896">#8CA896</Color>
+    <Color x:Key="AppColor8DE6B1">#8DE6B1</Color>
+    <Color x:Key="AppColor8FAF9C">#8FAF9C</Color>
+    <Color x:Key="AppColor9ECFB1">#9ECFB1</Color>
+    <Color x:Key="AppColor9FAAA3">#9FAAA3</Color>
+    <Color x:Key="AppColorA3AEA7">#A3AEA7</Color>
+    <Color x:Key="AppColorA7F6C4">#A7F6C4</Color>
+    <Color x:Key="AppColorA9B9AF">#A9B9AF</Color>
+    <Color x:Key="AppColorA9BDAF">#A9BDAF</Color>
+    <Color x:Key="AppColorAEBDB4">#AEBDB4</Color>
+    <Color x:Key="AppColorB9C4BE">#B9C4BE</Color>
+    <Color x:Key="AppColorC41ED760">#C41ED760</Color>
+    <Color x:Key="AppColorCFE1D5">#CFE1D5</Color>
+    <Color x:Key="AppColorD5E7DC">#D5E7DC</Color>
+    <Color x:Key="AppColorD7E4DC">#D7E4DC</Color>
+    <Color x:Key="AppColorD8141B17">#D8141B17</Color>
+    <Color x:Key="AppColorD8FFE6">#D8FFE6</Color>
+    <Color x:Key="AppColorE5FFEE">#E5FFEE</Color>
+    <Color x:Key="AppColorF48DFFB1">#F48DFFB1</Color>
+    <Color x:Key="AppColorF4F8F5">#F4F8F5</Color>
+    <Color x:Key="AppColorF7FAF8">#F7FAF8</Color>
+    <Color x:Key="AppColorFC161B18">#FC161B18</Color>
+    <Color x:Key="AppColorFFC457">#FFC457</Color>
+
+    <SolidColorBrush x:Key="AppBrush000000" Color="{StaticResource AppColor000000}" />
+    <SolidColorBrush x:Key="AppBrush00000000" Color="{StaticResource AppColor00000000}" />
+    <SolidColorBrush x:Key="AppBrush00141B17" Color="{StaticResource AppColor00141B17}" />
+    <SolidColorBrush x:Key="AppBrush001ED760" Color="{StaticResource AppColor001ED760}" />
+    <SolidColorBrush x:Key="AppBrush05150C" Color="{StaticResource AppColor05150C}" />
+    <SolidColorBrush x:Key="AppBrush0D7A39" Color="{StaticResource AppColor0D7A39}" />
+    <SolidColorBrush x:Key="AppBrush0F1511" Color="{StaticResource AppColor0F1511}" />
+    <SolidColorBrush x:Key="AppBrush101512" Color="{StaticResource AppColor101512}" />
+    <SolidColorBrush x:Key="AppBrush111714" Color="{StaticResource AppColor111714}" />
+    <SolidColorBrush x:Key="AppBrush141B17" Color="{StaticResource AppColor141B17}" />
+    <SolidColorBrush x:Key="AppBrush171D19" Color="{StaticResource AppColor171D19}" />
+    <SolidColorBrush x:Key="AppBrush17201B" Color="{StaticResource AppColor17201B}" />
+    <SolidColorBrush x:Key="AppBrush18201B" Color="{StaticResource AppColor18201B}" />
+    <SolidColorBrush x:Key="AppBrush18B653" Color="{StaticResource AppColor18B653}" />
+    <SolidColorBrush x:Key="AppBrush1B2920" Color="{StaticResource AppColor1B2920}" />
+    <SolidColorBrush x:Key="AppBrush1B3D2A" Color="{StaticResource AppColor1B3D2A}" />
+    <SolidColorBrush x:Key="AppBrush1ED760" Color="{StaticResource AppColor1ED760}" />
+    <SolidColorBrush x:Key="AppBrush1F2B24" Color="{StaticResource AppColor1F2B24}" />
+    <SolidColorBrush x:Key="AppBrush202824" Color="{StaticResource AppColor202824}" />
+    <SolidColorBrush x:Key="AppBrush202A24" Color="{StaticResource AppColor202A24}" />
+    <SolidColorBrush x:Key="AppBrush203228" Color="{StaticResource AppColor203228}" />
+    <SolidColorBrush x:Key="AppBrush203A29" Color="{StaticResource AppColor203A29}" />
+    <SolidColorBrush x:Key="AppBrush221B241F" Color="{StaticResource AppColor221B241F}" />
+    <SolidColorBrush x:Key="AppBrush241E2A24" Color="{StaticResource AppColor241E2A24}" />
+    <SolidColorBrush x:Key="AppBrush243027" Color="{StaticResource AppColor243027}" />
+    <SolidColorBrush x:Key="AppBrush244F35" Color="{StaticResource AppColor244F35}" />
+    <SolidColorBrush x:Key="AppBrush25342C" Color="{StaticResource AppColor25342C}" />
+    <SolidColorBrush x:Key="AppBrush26362D" Color="{StaticResource AppColor26362D}" />
+    <SolidColorBrush x:Key="AppBrush263E4F43" Color="{StaticResource AppColor263E4F43}" />
+    <SolidColorBrush x:Key="AppBrush28362E" Color="{StaticResource AppColor28362E}" />
+    <SolidColorBrush x:Key="AppBrush2A342D" Color="{StaticResource AppColor2A342D}" />
+    <SolidColorBrush x:Key="AppBrush2A3A31" Color="{StaticResource AppColor2A3A31}" />
+    <SolidColorBrush x:Key="AppBrush2B3A32" Color="{StaticResource AppColor2B3A32}" />
+    <SolidColorBrush x:Key="AppBrush314638" Color="{StaticResource AppColor314638}" />
+    <SolidColorBrush x:Key="AppBrush32483C" Color="{StaticResource AppColor32483C}" />
+    <SolidColorBrush x:Key="AppBrush334139" Color="{StaticResource AppColor334139}" />
+    <SolidColorBrush x:Key="AppBrush338DE6B1" Color="{StaticResource AppColor338DE6B1}" />
+    <SolidColorBrush x:Key="AppBrush365142" Color="{StaticResource AppColor365142}" />
+    <SolidColorBrush x:Key="AppBrush3D4B42" Color="{StaticResource AppColor3D4B42}" />
+    <SolidColorBrush x:Key="AppBrush40202A24" Color="{StaticResource AppColor40202A24}" />
+    <SolidColorBrush x:Key="AppBrush4936D87B" Color="{StaticResource AppColor4936D87B}" />
+    <SolidColorBrush x:Key="AppBrush4E6357" Color="{StaticResource AppColor4E6357}" />
+    <SolidColorBrush x:Key="AppBrush5AF0A0" Color="{StaticResource AppColor5AF0A0}" />
+    <SolidColorBrush x:Key="AppBrush66141B17" Color="{StaticResource AppColor66141B17}" />
+    <SolidColorBrush x:Key="AppBrush661ED760" Color="{StaticResource AppColor661ED760}" />
+    <SolidColorBrush x:Key="AppBrush668DE6B1" Color="{StaticResource AppColor668DE6B1}" />
+    <SolidColorBrush x:Key="AppBrush6F7D74" Color="{StaticResource AppColor6F7D74}" />
+    <SolidColorBrush x:Key="AppBrush708DE6B1" Color="{StaticResource AppColor708DE6B1}" />
+    <SolidColorBrush x:Key="AppBrush77847C" Color="{StaticResource AppColor77847C}" />
+    <SolidColorBrush x:Key="AppBrush789181" Color="{StaticResource AppColor789181}" />
+    <SolidColorBrush x:Key="AppBrush789183" Color="{StaticResource AppColor789183}" />
+    <SolidColorBrush x:Key="AppBrush7F8D84" Color="{StaticResource AppColor7F8D84}" />
+    <SolidColorBrush x:Key="AppBrush7F9A8A" Color="{StaticResource AppColor7F9A8A}" />
+    <SolidColorBrush x:Key="AppBrush8CA896" Color="{StaticResource AppColor8CA896}" />
+    <SolidColorBrush x:Key="AppBrush8DE6B1" Color="{StaticResource AppColor8DE6B1}" />
+    <SolidColorBrush x:Key="AppBrush8FAF9C" Color="{StaticResource AppColor8FAF9C}" />
+    <SolidColorBrush x:Key="AppBrush9ECFB1" Color="{StaticResource AppColor9ECFB1}" />
+    <SolidColorBrush x:Key="AppBrush9FAAA3" Color="{StaticResource AppColor9FAAA3}" />
+    <SolidColorBrush x:Key="AppBrushA3AEA7" Color="{StaticResource AppColorA3AEA7}" />
+    <SolidColorBrush x:Key="AppBrushA7F6C4" Color="{StaticResource AppColorA7F6C4}" />
+    <SolidColorBrush x:Key="AppBrushA9B9AF" Color="{StaticResource AppColorA9B9AF}" />
+    <SolidColorBrush x:Key="AppBrushA9BDAF" Color="{StaticResource AppColorA9BDAF}" />
+    <SolidColorBrush x:Key="AppBrushAEBDB4" Color="{StaticResource AppColorAEBDB4}" />
+    <SolidColorBrush x:Key="AppBrushB9C4BE" Color="{StaticResource AppColorB9C4BE}" />
+    <SolidColorBrush x:Key="AppBrushC41ED760" Color="{StaticResource AppColorC41ED760}" />
+    <SolidColorBrush x:Key="AppBrushCFE1D5" Color="{StaticResource AppColorCFE1D5}" />
+    <SolidColorBrush x:Key="AppBrushD5E7DC" Color="{StaticResource AppColorD5E7DC}" />
+    <SolidColorBrush x:Key="AppBrushD7E4DC" Color="{StaticResource AppColorD7E4DC}" />
+    <SolidColorBrush x:Key="AppBrushD8141B17" Color="{StaticResource AppColorD8141B17}" />
+    <SolidColorBrush x:Key="AppBrushD8FFE6" Color="{StaticResource AppColorD8FFE6}" />
+    <SolidColorBrush x:Key="AppBrushE5FFEE" Color="{StaticResource AppColorE5FFEE}" />
+    <SolidColorBrush x:Key="AppBrushF48DFFB1" Color="{StaticResource AppColorF48DFFB1}" />
+    <SolidColorBrush x:Key="AppBrushF4F8F5" Color="{StaticResource AppColorF4F8F5}" />
+    <SolidColorBrush x:Key="AppBrushF7FAF8" Color="{StaticResource AppColorF7FAF8}" />
+    <SolidColorBrush x:Key="AppBrushFC161B18" Color="{StaticResource AppColorFC161B18}" />
+    <SolidColorBrush x:Key="AppBrushFFC457" Color="{StaticResource AppColorFFC457}" />
+</ResourceDictionary>

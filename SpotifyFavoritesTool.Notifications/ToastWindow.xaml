@@ -15,8 +15,8 @@
         Loaded="Window_Loaded"
         Closed="Window_Closed">
     <Border CornerRadius="8"
-            Background="#FC161B18"
-            BorderBrush="#4936D87B"
+            Background="{StaticResource AppBrushFC161B18}"
+            BorderBrush="{StaticResource AppBrush4936D87B}"
             BorderThickness="1"
             Padding="8"
             SnapsToDevicePixels="True">
@@ -33,8 +33,8 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     CornerRadius="6"
-                    Background="#202824"
-                    BorderBrush="#334139"
+                    Background="{StaticResource AppBrush202824}"
+                    BorderBrush="{StaticResource AppBrush334139}"
                     BorderThickness="1">
                 <Grid>
                     <Image x:Name="AlbumArt"
@@ -42,7 +42,7 @@
                            RenderOptions.BitmapScalingMode="HighQuality" />
                     <TextBlock x:Name="AlbumPlaceholder"
                                Text="SP"
-                               Foreground="#6F7D74"
+                               Foreground="{StaticResource AppBrush6F7D74}"
                                FontWeight="Bold"
                                FontSize="12"
                                HorizontalAlignment="Center"
@@ -62,7 +62,7 @@
                             Orientation="Horizontal"
                             VerticalAlignment="Center">
                     <TextBlock x:Name="ActionText"
-                               Foreground="#8DE6B1"
+                               Foreground="{StaticResource AppBrush8DE6B1}"
                                FontSize="12"
                                FontWeight="SemiBold"
                                TextTrimming="CharacterEllipsis" />
@@ -78,7 +78,7 @@
                                 <Setter Property="Width" Value="3" />
                                 <Setter Property="RadiusX" Value="1.4" />
                                 <Setter Property="RadiusY" Value="1.4" />
-                                <Setter Property="Fill" Value="#8DE6B1" />
+                                <Setter Property="Fill" Value="{StaticResource AppBrush8DE6B1}" />
                                 <Setter Property="VerticalAlignment" Value="Bottom" />
                                 <Setter Property="Margin" Value="0,0,2,0" />
                             </Style>
@@ -146,13 +146,13 @@
                 </StackPanel>
                 <TextBlock x:Name="TrackTitle"
                            Grid.Row="1"
-                           Foreground="#F7FAF8"
+                           Foreground="{StaticResource AppBrushF7FAF8}"
                            FontSize="14.5"
                            FontWeight="Bold"
                            TextTrimming="CharacterEllipsis" />
                 <TextBlock x:Name="ArtistText"
                            Grid.Row="2"
-                           Foreground="#B9C4BE"
+                           Foreground="{StaticResource AppBrushB9C4BE}"
                            FontSize="11.5"
                            TextTrimming="CharacterEllipsis" />
             </Grid>
@@ -182,11 +182,11 @@
                              RenderTransformOrigin="0.5,0.5">
                         <Ellipse.Fill>
                             <RadialGradientBrush>
-                                <GradientStop Color="#F48DFFB1"
+                                <GradientStop Color="{StaticResource AppColorF48DFFB1}"
                                               Offset="0" />
-                                <GradientStop Color="#C41ED760"
+                                <GradientStop Color="{StaticResource AppColorC41ED760}"
                                               Offset="0.44" />
-                                <GradientStop Color="#001ED760"
+                                <GradientStop Color="{StaticResource AppColor001ED760}"
                                               Offset="1" />
                             </RadialGradientBrush>
                         </Ellipse.Fill>
@@ -202,7 +202,7 @@
 
                     <Path x:Name="SparkleTop"
                           Data="M 27,2 L 29.2,8 L 35,10 L 29.2,12 L 27,18 L 24.8,12 L 19,10 L 24.8,8 Z"
-                          Fill="#D8FFE6"
+                          Fill="{StaticResource AppBrushD8FFE6}"
                           Opacity="0"
                           RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -217,7 +217,7 @@
 
                     <Path x:Name="SparkleLeft"
                           Data="M 8,16 L 9.4,20 L 13.5,21.4 L 9.4,22.8 L 8,27 L 6.6,22.8 L 2.5,21.4 L 6.6,20 Z"
-                          Fill="#A7F6C4"
+                          Fill="{StaticResource AppBrushA7F6C4}"
                           Opacity="0"
                           RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -229,7 +229,7 @@
 
                     <Path x:Name="SparkleRight"
                           Data="M 46,18 L 47.5,22 L 51.5,23.5 L 47.5,25 L 46,29 L 44.5,25 L 40.5,23.5 L 44.5,22 Z"
-                          Fill="#E5FFEE"
+                          Fill="{StaticResource AppBrushE5FFEE}"
                           Opacity="0"
                           RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -241,7 +241,7 @@
 
                     <Path x:Name="DropShape"
                           Data="M 27,8 C 35,19 39,25 39,33 C 39,41 33.5,46 27,46 C 20.5,46 15,41 15,33 C 15,25 19,19 27,8 Z"
-                          Fill="#1ED760"
+                          Fill="{StaticResource AppBrush1ED760}"
                           Opacity="0"
                           RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -257,7 +257,7 @@
 
                     <Path x:Name="HeartFill"
                           Data="M 27,47 C 22,42 7,31.5 5.8,19 C 4.8,9 12.5,4 19.4,8.5 C 23.3,11 25.7,14.6 27,17.8 C 28.3,14.6 30.7,11 34.6,8.5 C 41.5,4 49.2,9 48.2,19 C 47,31.5 32,42 27,47 Z"
-                          Fill="#18B653"
+                          Fill="{StaticResource AppBrush18B653}"
                           Opacity="0"
                           RenderTransformOrigin="0.5,0.5">
                         <Path.Effect>
@@ -265,7 +265,7 @@
                                               ShadowDepth="1"
                                               Direction="270"
                                               Opacity="0.62"
-                                              Color="#05150C" />
+                                              Color="{StaticResource AppColor05150C}" />
                         </Path.Effect>
                         <Path.RenderTransform>
                             <TransformGroup>
@@ -282,7 +282,7 @@
                     <Path x:Name="HeartOutline"
                           Data="M 27,47 C 22,42 7,31.5 5.8,19 C 4.8,9 12.5,4 19.4,8.5 C 23.3,11 25.7,14.6 27,17.8 C 28.3,14.6 30.7,11 34.6,8.5 C 41.5,4 49.2,9 48.2,19 C 47,31.5 32,42 27,47 Z"
                           Fill="Transparent"
-                          Stroke="#D5E7DC"
+                          Stroke="{StaticResource AppBrushD5E7DC}"
                           StrokeThickness="3"
                           StrokeStartLineCap="Round"
                           StrokeEndLineCap="Round"
@@ -292,7 +292,7 @@
                             <DropShadowEffect BlurRadius="8"
                                               ShadowDepth="0"
                                               Opacity="0.42"
-                                              Color="#05150C" />
+                                              Color="{StaticResource AppColor05150C}" />
                         </Path.Effect>
                     </Path>
 
@@ -306,7 +306,7 @@
                                           TileMode="Tile"
                                           Opacity="0.24">
                                 <DrawingBrush.Drawing>
-                                    <GeometryDrawing Brush="#0D7A39"
+                                    <GeometryDrawing Brush="{StaticResource AppBrush0D7A39}"
                                                      Geometry="M 0,6 L 6,0 L 7,1 L 1,7 Z" />
                                 </DrawingBrush.Drawing>
                             </DrawingBrush>
@@ -315,7 +315,7 @@
 
                     <Path x:Name="CrackLines"
                           Data="M 27,17 L 23,25 L 29,29 L 24,39 M 35,12 L 31,22 L 36,26"
-                          Stroke="#101512"
+                          Stroke="{StaticResource AppBrush101512}"
                           StrokeThickness="2.2"
                           StrokeStartLineCap="Round"
                           StrokeEndLineCap="Round"
@@ -324,7 +324,7 @@
 
                     <Path x:Name="HeartPieceLeft"
                           Data="M 27,47 C 22,42 7,31.5 5.8,19 C 4.8,9 12.5,4 19.4,8.5 C 23.3,11 25.7,14.6 27,17.8 L 24,29 L 27,47 Z"
-                          Fill="#8CA896"
+                          Fill="{StaticResource AppBrush8CA896}"
                           Opacity="0"
                           RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -337,7 +337,7 @@
 
                     <Path x:Name="HeartPieceRight"
                           Data="M 27,47 L 24,29 L 27,17.8 C 28.3,14.6 30.7,11 34.6,8.5 C 41.5,4 49.2,9 48.2,19 C 47,31.5 32,42 27,47 Z"
-                          Fill="#789181"
+                          Fill="{StaticResource AppBrush789181}"
                           Opacity="0"
                           RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -350,7 +350,7 @@
 
                     <Path x:Name="HeartPieceCenter"
                           Data="M 24,29 L 29,30 L 24,40 L 27,47 L 24,29 Z"
-                          Fill="#A9BDAF"
+                          Fill="{StaticResource AppBrushA9BDAF}"
                           Opacity="0"
                           RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -365,7 +365,7 @@
 
                 <TextBlock x:Name="ErrorIconText"
                            Text="!"
-                           Foreground="#FFC457"
+                           Foreground="{StaticResource AppBrushFFC457}"
                            FontSize="48"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"

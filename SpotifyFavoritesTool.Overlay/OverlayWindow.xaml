@@ -25,9 +25,9 @@
             <Setter Property="Width" Value="34" />
             <Setter Property="Height" Value="32" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="Foreground" Value="#F4F8F5" />
-            <Setter Property="Background" Value="#202A24" />
-            <Setter Property="BorderBrush" Value="#3D4B42" />
+            <Setter Property="Foreground" Value="{StaticResource AppBrushF4F8F5}" />
+            <Setter Property="Background" Value="{StaticResource AppBrush202A24}" />
+            <Setter Property="BorderBrush" Value="{StaticResource AppBrush3D4B42}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="FontSize" Value="15" />
@@ -35,7 +35,7 @@
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="ui:RippleEffectBehavior.IsEnabled" Value="True" />
-            <Setter Property="ui:RippleEffectBehavior.RippleBrush" Value="#1ED760" />
+            <Setter Property="ui:RippleEffectBehavior.RippleBrush" Value="{StaticResource AppBrush1ED760}" />
             <Setter Property="ui:RippleEffectBehavior.PressedOpacity" Value="0.24" />
             <Setter Property="ui:RippleEffectBehavior.DurationMilliseconds" Value="420" />
             <Setter Property="Template">
@@ -59,12 +59,12 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Root" Property="Background" Value="#2B3A32" />
-                                <Setter TargetName="Root" Property="BorderBrush" Value="#4E6357" />
+                                <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush2B3A32}" />
+                                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush4E6357}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Root" Property="Background" Value="#203A29" />
-                                <Setter TargetName="Root" Property="BorderBrush" Value="#1ED760" />
+                                <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush203A29}" />
+                                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush1ED760}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -88,8 +88,8 @@
             <Setter Property="Width" Value="64" />
             <Setter Property="Height" Value="64" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="#202824" />
-            <Setter Property="BorderBrush" Value="#334139" />
+            <Setter Property="Background" Value="{StaticResource AppBrush202824}" />
+            <Setter Property="BorderBrush" Value="{StaticResource AppBrush334139}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -99,19 +99,19 @@
                     <DropShadowEffect BlurRadius="0"
                                       ShadowDepth="0"
                                       Opacity="0"
-                                      Color="#1ED760" />
+                                      Color="{StaticResource AppColor1ED760}" />
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="BorderBrush" Value="#668DE6B1" />
-                    <Setter Property="Background" Value="#203228" />
+                    <Setter Property="BorderBrush" Value="{StaticResource AppBrush668DE6B1}" />
+                    <Setter Property="Background" Value="{StaticResource AppBrush203228}" />
                     <Setter Property="Effect">
                         <Setter.Value>
                             <DropShadowEffect BlurRadius="24"
                                               ShadowDepth="0"
                                               Opacity="0.46"
-                                              Color="#5AF0A0" />
+                                              Color="{StaticResource AppColor5AF0A0}" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -123,9 +123,9 @@
                              Margin="7"
                              Padding="12"
                              CornerRadius="12"
-                             BaseColor="#101512"
+                             BaseColor="{StaticResource AppColor101512}"
                              SurfaceOpacity="1"
-                             BorderBrush="#365142"
+                             BorderBrush="{StaticResource AppBrush365142}"
                              BorderThickness="1"
                              SnapsToDevicePixels="True"
                              MouseLeftButtonDown="OverlayRoot_MouseLeftButtonDown">
@@ -133,7 +133,7 @@
             <DropShadowEffect BlurRadius="18"
                               ShadowDepth="0"
                               Opacity="0.35"
-                              Color="#000000" />
+                              Color="{StaticResource AppColor000000}" />
         </ui:LiquidHoverBorder.Effect>
 
         <Grid>
@@ -161,8 +161,8 @@
                                 Width="320"
                                 Height="320"
                                 CornerRadius="10"
-                                Background="#101512"
-                                BorderBrush="#365142"
+                                Background="{StaticResource AppBrush101512}"
+                                BorderBrush="{StaticResource AppBrush365142}"
                                 BorderThickness="1"
                                 ClipToBounds="True">
                             <Grid>
@@ -209,21 +209,21 @@
                                                      GradientOrigin="0.28,0.18"
                                                      RadiusX="0.78"
                                                      RadiusY="0.78">
-                                    <GradientStop Color="#661ED760" Offset="0" />
-                                    <GradientStop Color="#338DE6B1" Offset="0.42" />
-                                    <GradientStop Color="#00000000" Offset="1" />
+                                    <GradientStop Color="{StaticResource AppColor661ED760}" Offset="0" />
+                                    <GradientStop Color="{StaticResource AppColor338DE6B1}" Offset="0.42" />
+                                    <GradientStop Color="{StaticResource AppColor00000000}" Offset="1" />
                                 </RadialGradientBrush>
                             </Border.Background>
                         </Border>
                         <Border x:Name="ArtworkInnerGlow"
-                                BorderBrush="#708DE6B1"
+                                BorderBrush="{StaticResource AppBrush708DE6B1}"
                                 BorderThickness="1"
                                 CornerRadius="8"
                                 Opacity="0"
                                 IsHitTestVisible="False" />
                         <TextBlock x:Name="AlbumPlaceholder"
                                    Text="SP"
-                                   Foreground="#6F7D74"
+                                   Foreground="{StaticResource AppBrush6F7D74}"
                                    FontWeight="Bold"
                                    FontSize="17"
                                    HorizontalAlignment="Center"
@@ -271,13 +271,13 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock x:Name="TrackTitle"
-                           Foreground="#F7FAF8"
+                           Foreground="{StaticResource AppBrushF7FAF8}"
                            FontSize="15"
                            FontWeight="Bold"
                            TextTrimming="CharacterEllipsis" />
                 <TextBlock x:Name="ArtistText"
                            Grid.Row="1"
-                           Foreground="#B9C4BE"
+                           Foreground="{StaticResource AppBrushB9C4BE}"
                            FontSize="12"
                            TextTrimming="CharacterEllipsis" />
             </Grid>
@@ -310,14 +310,14 @@
                             IsHitTestVisible="False">
                         <Path x:Name="PlayGlyph"
                               Data="M 4,3 L 13,8 L 4,13 Z"
-                              Fill="#F4F8F5"
+                              Fill="{StaticResource AppBrushF4F8F5}"
                               Visibility="Collapsed" />
                         <Rectangle x:Name="PauseGlyphLeft"
                                    Width="3.2"
                                    Height="10"
                                    RadiusX="1"
                                    RadiusY="1"
-                                   Fill="#F4F8F5"
+                                   Fill="{StaticResource AppBrushF4F8F5}"
                                    Canvas.Left="4"
                                    Canvas.Top="3" />
                         <Rectangle x:Name="PauseGlyphRight"
@@ -325,7 +325,7 @@
                                    Height="10"
                                    RadiusX="1"
                                    RadiusY="1"
-                                   Fill="#F4F8F5"
+                                   Fill="{StaticResource AppBrushF4F8F5}"
                                    Canvas.Left="9"
                                    Canvas.Top="3" />
                     </Canvas>
@@ -344,7 +344,7 @@
                             Height="16"
                             IsHitTestVisible="False">
                         <Path Data="M 3,4 L 13,4 M 3,8 L 13,8 M 3,12 L 13,12"
-                              Stroke="#F4F8F5"
+                              Stroke="{StaticResource AppBrushF4F8F5}"
                               StrokeThickness="1.8"
                               StrokeStartLineCap="Round"
                               StrokeEndLineCap="Round" />
@@ -359,16 +359,16 @@
                             Height="16"
                             IsHitTestVisible="False">
                         <Path Data="M 4,2.5 L 10.6,2.5 L 13,4.9 L 13,13.5 L 4,13.5 Z"
-                              Fill="#1F2B24"
-                              Stroke="#8DE6B1"
+                              Fill="{StaticResource AppBrush1F2B24}"
+                              Stroke="{StaticResource AppBrush8DE6B1}"
                               StrokeThickness="1.25"
                               StrokeLineJoin="Round" />
                         <Path Data="M 10.6,2.6 L 10.6,5 L 13,5"
-                              Stroke="#8DE6B1"
+                              Stroke="{StaticResource AppBrush8DE6B1}"
                               StrokeThickness="1.15"
                               StrokeLineJoin="Round" />
                         <Path Data="M 6,6.3 L 11,6.3 M 6,8.5 L 11,8.5 M 6,10.7 L 9.5,10.7"
-                              Stroke="#F4F8F5"
+                              Stroke="{StaticResource AppBrushF4F8F5}"
                               StrokeThickness="1.25"
                               StrokeStartLineCap="Round"
                               StrokeEndLineCap="Round" />
@@ -384,8 +384,8 @@
                                      Height="276"
                                      Visibility="Collapsed"
                                      CornerRadius="10"
-                                     BaseColor="#141B17"
-                                     BorderBrush="#32483C"
+                                     BaseColor="{StaticResource AppColor141B17}"
+                                     BorderBrush="{StaticResource AppBrush32483C}"
                                      BorderThickness="1"
                                      IsLiquidEnabled="False"
                                      SurfaceOpacity="0.20">
@@ -397,7 +397,7 @@
 
                     <TextBlock x:Name="HistoryTitleText"
                                Text="Текущий плейлист"
-                               Foreground="#F4F8F5"
+                               Foreground="{StaticResource AppBrushF4F8F5}"
                                FontWeight="SemiBold"
                                FontSize="12"
                                Margin="0,0,0,8" />
@@ -441,18 +441,18 @@
                                         </Grid.ColumnDefinitions>
                                         <Border Height="1"
                                                 VerticalAlignment="Center"
-                                                Background="#263E4F43" />
+                                                Background="{StaticResource AppBrush263E4F43}" />
                                         <TextBlock x:Name="SectionHeaderText"
                                                    Grid.Column="1"
                                                    Margin="10,0"
-                                                   Foreground="#8DE6B1"
+                                                   Foreground="{StaticResource AppBrush8DE6B1}"
                                                    FontSize="10"
                                                    FontWeight="SemiBold"
                                                    Text="Раздел" />
                                         <Border Grid.Column="2"
                                                 Height="1"
                                                 VerticalAlignment="Center"
-                                                Background="#263E4F43" />
+                                                Background="{StaticResource AppBrush263E4F43}" />
                                     </Grid>
 
                                     <Border x:Name="HistoryItemRoot"
@@ -473,7 +473,7 @@
                                                 Height="34"
                                                 Margin="0,0,8,0"
                                                 CornerRadius="6"
-                                                Background="#202824"
+                                                Background="{StaticResource AppBrush202824}"
                                                 ClipToBounds="True"
                                                 Visibility="Visible">
                                             <Image Source="{Binding Track.AlbumImageUrl}"
@@ -494,14 +494,14 @@
 
                                             <TextBlock x:Name="HistoryTrackLine"
                                                        Text="{Binding Track.Name}"
-                                                       Foreground="#F4F8F5"
+                                                       Foreground="{StaticResource AppBrushF4F8F5}"
                                                        FontSize="11.5"
                                                        FontWeight="SemiBold"
                                                        TextTrimming="CharacterEllipsis" />
                                             <TextBlock x:Name="HistoryArtistLine"
                                                        Grid.Row="1"
                                                        Text="{Binding Track.Artists}"
-                                                       Foreground="#9FAAA3"
+                                                       Foreground="{StaticResource AppBrush9FAAA3}"
                                                        FontSize="10"
                                                        TextTrimming="CharacterEllipsis" />
 
@@ -518,7 +518,7 @@
                                                         <Setter Property="Width" Value="3" />
                                                         <Setter Property="RadiusX" Value="1.4" />
                                                         <Setter Property="RadiusY" Value="1.4" />
-                                                        <Setter Property="Fill" Value="#8DE6B1" />
+                                                        <Setter Property="Fill" Value="{StaticResource AppBrush8DE6B1}" />
                                                         <Setter Property="VerticalAlignment" Value="Bottom" />
                                                         <Setter Property="Margin" Value="0,0,2,0" />
                                                     </Style>
@@ -597,7 +597,7 @@
                                                         Height="14"
                                                         IsHitTestVisible="False">
                                                     <Path Data="M 4,2.5 L 12,7 L 4,11.5 Z"
-                                                          Fill="#F4F8F5" />
+                                                          Fill="{StaticResource AppBrushF4F8F5}" />
                                                 </Canvas>
                                             </Button>
                                             <Button x:Name="HistoryFavoriteButton"
@@ -619,7 +619,7 @@
                                                 </Grid.RowDefinitions>
                                                 <TextBlock x:Name="HistoryDuration"
                                                            Text="{Binding Track.DurationText}"
-                                                           Foreground="#7F8D84"
+                                                           Foreground="{StaticResource AppBrush7F8D84}"
                                                            FontSize="10"
                                                            FontWeight="SemiBold"
                                                            HorizontalAlignment="Center"
@@ -627,7 +627,7 @@
                                                 <TextBlock x:Name="HistoryFavoriteGlyph"
                                                            Grid.Row="1"
                                                            Text="{Binding Track.FavoriteGlyph}"
-                                                           Foreground="#8DE6B1"
+                                                           Foreground="{StaticResource AppBrush8DE6B1}"
                                                            FontSize="13"
                                                            FontWeight="SemiBold"
                                                            HorizontalAlignment="Center"
@@ -650,8 +650,8 @@
                                         <Setter TargetName="SectionHeaderText" Property="Text" Value="Далее" />
                                     </DataTrigger>
                                     <Trigger SourceName="HistoryItemRoot" Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="HistoryItemRoot" Property="Background" Value="#40202A24" />
-                                        <Setter TargetName="HistoryItemRoot" Property="BorderBrush" Value="#314638" />
+                                        <Setter TargetName="HistoryItemRoot" Property="Background" Value="{StaticResource AppBrush40202A24}" />
+                                        <Setter TargetName="HistoryItemRoot" Property="BorderBrush" Value="{StaticResource AppBrush314638}" />
                                         <Setter TargetName="HistoryActions" Property="Visibility" Value="Visible" />
                                         <Setter TargetName="HistoryMeta" Property="Visibility" Value="Collapsed" />
                                     </Trigger>
@@ -660,10 +660,10 @@
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Track.IsPlaying}" Value="False">
                                         <Setter TargetName="HistoryItemRoot" Property="Opacity" Value="0.58" />
-                                        <Setter TargetName="HistoryTrackLine" Property="Foreground" Value="#A3AEA7" />
-                                        <Setter TargetName="HistoryArtistLine" Property="Foreground" Value="#7F8D84" />
+                                        <Setter TargetName="HistoryTrackLine" Property="Foreground" Value="{StaticResource AppBrushA3AEA7}" />
+                                        <Setter TargetName="HistoryArtistLine" Property="Foreground" Value="{StaticResource AppBrush7F8D84}" />
                                         <Setter TargetName="HistoryCover" Property="Opacity" Value="0.56" />
-                                        <Setter TargetName="HistoryFavoriteGlyph" Property="Foreground" Value="#7F8D84" />
+                                        <Setter TargetName="HistoryFavoriteGlyph" Property="Foreground" Value="{StaticResource AppBrush7F8D84}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Track.IsLiked}" Value="{x:Null}">
                                         <Setter TargetName="HistoryFavoriteGlyph" Property="Visibility" Value="Collapsed" />
@@ -677,7 +677,7 @@
                     <TextBlock x:Name="TrackListEmptyText"
                                Grid.Row="1"
                                Text="Spotify не отдал плейлист для текущего трека."
-                               Foreground="#7F8D84"
+                               Foreground="{StaticResource AppBrush7F8D84}"
                                FontSize="12"
                                TextWrapping="Wrap"
                                HorizontalAlignment="Center"
@@ -692,11 +692,11 @@
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0"
                                                  EndPoint="0,1">
-                                <GradientStop Color="#00141B17"
+                                <GradientStop Color="{StaticResource AppColor00141B17}"
                                               Offset="0" />
-                                <GradientStop Color="#66141B17"
+                                <GradientStop Color="{StaticResource AppColor66141B17}"
                                               Offset="0.56" />
-                                <GradientStop Color="#D8141B17"
+                                <GradientStop Color="{StaticResource AppColorD8141B17}"
                                               Offset="1" />
                             </LinearGradientBrush>
                         </Border.Background>
@@ -712,8 +712,8 @@
                                   Height="276"
                                   Visibility="Collapsed"
                                   CornerRadius="10"
-                                  BaseColor="#141B17"
-                                  BorderBrush="#32483C"
+                                  BaseColor="{StaticResource AppColor141B17}"
+                                  BorderBrush="{StaticResource AppBrush32483C}"
                                   BorderThickness="1"
                                   IsLiquidEnabled="False"
                                   SurfaceOpacity="0.20">
@@ -729,13 +729,13 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Lyrics"
-                                   Foreground="#F4F8F5"
+                                   Foreground="{StaticResource AppBrushF4F8F5}"
                                    FontWeight="SemiBold"
                                    FontSize="12"
                                    VerticalAlignment="Center" />
                         <TextBlock x:Name="KaraokeStatusText"
                                    Grid.Column="1"
-                                   Foreground="#8DE6B1"
+                                   Foreground="{StaticResource AppBrush8DE6B1}"
                                    FontSize="10"
                                    TextTrimming="CharacterEllipsis"
                                    VerticalAlignment="Center" />
@@ -750,9 +750,9 @@
                              IsReadOnly="True"
                              BorderThickness="0"
                              Background="Transparent"
-                             Foreground="#D7E4DC"
-                             CaretBrush="#1ED760"
-                             SelectionBrush="#1ED760"
+                             Foreground="{StaticResource AppBrushD7E4DC}"
+                             CaretBrush="{StaticResource AppBrush1ED760}"
+                             SelectionBrush="{StaticResource AppBrush1ED760}"
                              SelectionOpacity="0.35"
                              FocusVisualStyle="{x:Null}"
                              FontSize="12.5"

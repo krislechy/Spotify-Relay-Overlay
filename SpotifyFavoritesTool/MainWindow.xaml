@@ -26,15 +26,15 @@
             <Setter Property="Margin" Value="0,0,8,0" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Foreground" Value="#F4F8F5" />
-            <Setter Property="Background" Value="#202A24" />
-            <Setter Property="BorderBrush" Value="#3D4B42" />
+            <Setter Property="Foreground" Value="{StaticResource AppBrushF4F8F5}" />
+            <Setter Property="Background" Value="{StaticResource AppBrush202A24}" />
+            <Setter Property="BorderBrush" Value="{StaticResource AppBrush3D4B42}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="ui:RippleEffectBehavior.IsEnabled" Value="True" />
-            <Setter Property="ui:RippleEffectBehavior.RippleBrush" Value="#1ED760" />
+            <Setter Property="ui:RippleEffectBehavior.RippleBrush" Value="{StaticResource AppBrush1ED760}" />
             <Setter Property="ui:RippleEffectBehavior.PressedOpacity" Value="0.24" />
             <Setter Property="ui:RippleEffectBehavior.DurationMilliseconds" Value="460" />
             <Setter Property="Template">
@@ -59,12 +59,12 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Root" Property="Background" Value="#2B3A32" />
-                                <Setter TargetName="Root" Property="BorderBrush" Value="#4E6357" />
+                                <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush2B3A32}" />
+                                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush4E6357}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Root" Property="Background" Value="#203A29" />
-                                <Setter TargetName="Root" Property="BorderBrush" Value="#1ED760" />
+                                <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush203A29}" />
+                                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush1ED760}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -99,8 +99,8 @@
             <Setter Property="Width" Value="20" />
             <Setter Property="Height" Value="20" />
             <Setter Property="Margin" Value="0,0,6,0" />
-            <Setter Property="Background" Value="#202A24" />
-            <Setter Property="BorderBrush" Value="#3D4B42" />
+            <Setter Property="Background" Value="{StaticResource AppBrush202A24}" />
+            <Setter Property="BorderBrush" Value="{StaticResource AppBrush3D4B42}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -120,7 +120,7 @@
                                      VerticalAlignment="Center"
                                      RenderTransformOrigin="0.5,0.5">
                                 <Path Data="M 1,3 L 5,7 L 9,3"
-                                      Stroke="#8DE6B1"
+                                      Stroke="{StaticResource AppBrush8DE6B1}"
                                       StrokeThickness="1.8"
                                       StrokeStartLineCap="Round"
                                       StrokeEndLineCap="Round" />
@@ -128,11 +128,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Root" Property="Background" Value="#2B3A32" />
-                                <Setter TargetName="Root" Property="BorderBrush" Value="#4E6357" />
+                                <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush2B3A32}" />
+                                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush4E6357}" />
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Root" Property="BorderBrush" Value="#1ED760" />
+                                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush1ED760}" />
                                 <Setter TargetName="Arrow" Property="RenderTransform">
                                     <Setter.Value>
                                         <RotateTransform Angle="180" />
@@ -150,7 +150,7 @@
         </Style>
 
         <Style x:Key="LogExpander" TargetType="Expander">
-            <Setter Property="Foreground" Value="#D7E4DC" />
+            <Setter Property="Foreground" Value="{StaticResource AppBrushD7E4DC}" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="IsTabStop" Value="False" />
@@ -182,8 +182,8 @@
                                     Margin="26,5,0,3"
                                     Padding="10,8"
                                     CornerRadius="8"
-                                    Background="#221B241F"
-                                    BorderBrush="#26362D"
+                                    Background="{StaticResource AppBrush221B241F}"
+                                    BorderBrush="{StaticResource AppBrush26362D}"
                                     BorderThickness="1"
                                     Visibility="Collapsed">
                                 <ContentPresenter />
@@ -207,16 +207,16 @@
 
     <ui:LiquidHoverBorder Margin="8"
                              CornerRadius="12"
-                             BaseColor="#101512"
+                             BaseColor="{StaticResource AppColor101512}"
                              SurfaceOpacity="1"
-                             BorderBrush="#2A3A31"
+                             BorderBrush="{StaticResource AppBrush2A3A31}"
                              BorderThickness="1"
                              SnapsToDevicePixels="True">
         <ui:LiquidHoverBorder.Effect>
             <DropShadowEffect BlurRadius="18"
                               ShadowDepth="0"
                               Opacity="0.28"
-                              Color="#000000" />
+                              Color="{StaticResource AppColor000000}" />
         </ui:LiquidHoverBorder.Effect>
 
         <Grid>
@@ -238,9 +238,9 @@
                 <Border Width="28"
                         Height="28"
                         CornerRadius="7"
-                        Background="#1ED760">
+                        Background="{StaticResource AppBrush1ED760}">
                     <TextBlock Text="♥"
-                               Foreground="#0F1511"
+                               Foreground="{StaticResource AppBrush0F1511}"
                                FontSize="16"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
@@ -251,11 +251,11 @@
                             Margin="10,0,0,0"
                             VerticalAlignment="Center">
                     <TextBlock Text="Spotify Favorites Tool"
-                               Foreground="#F4F8F5"
+                               Foreground="{StaticResource AppBrushF4F8F5}"
                                FontSize="14"
                                FontWeight="SemiBold" />
                     <TextBlock Text="Горячая клавиша для текущего трека"
-                               Foreground="#7F8D84"
+                               Foreground="{StaticResource AppBrush7F8D84}"
                                FontSize="10" />
                 </StackPanel>
 
@@ -282,10 +282,10 @@
                                      Margin="12,10,12,12"
                                      Padding="16"
                                      CornerRadius="10"
-                                     BaseColor="#141B17"
+                                     BaseColor="{StaticResource AppColor141B17}"
                                      IsLiquidEnabled="False"
                                      SurfaceOpacity="0.20"
-                                     BorderBrush="#25342C"
+                                     BorderBrush="{StaticResource AppBrush25342C}"
                                      BorderThickness="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -296,7 +296,7 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="Горячие клавиши Spotify"
-                               Foreground="#D7E4DC"
+                               Foreground="{StaticResource AppBrushD7E4DC}"
                                FontSize="13"
                                FontWeight="SemiBold"
                                TextWrapping="Wrap" />
@@ -305,20 +305,20 @@
                                              Margin="0,14,0,0"
                                              Padding="12"
                                              CornerRadius="8"
-                                             BaseColor="#18201B"
+                                             BaseColor="{StaticResource AppColor18201B}"
                                              IsLiquidEnabled="False"
                                              SurfaceOpacity="0.20"
-                                             BorderBrush="#28362E"
+                                             BorderBrush="{StaticResource AppBrush28362E}"
                                              BorderThickness="1">
                         <StackPanel>
                             <TextBlock x:Name="HotkeyText"
-                                       Foreground="#8DE6B1"
+                                       Foreground="{StaticResource AppBrush8DE6B1}"
                                        FontSize="13"
                                        FontWeight="SemiBold"
                                        TextWrapping="Wrap" />
                             <TextBlock x:Name="StatusText"
                                        Margin="0,8,0,0"
-                                       Foreground="#D7E4DC"
+                                       Foreground="{StaticResource AppBrushD7E4DC}"
                                        FontSize="12"
                                        LineHeight="18"
                                        TextWrapping="Wrap" />
@@ -342,11 +342,11 @@
                                     IsHitTestVisible="False">
                                 <Path Data="M 4,3 L 14,3 Q 15,3 15,4 L 15,15 L 12,13 L 9,15 L 6,13 L 3,15 L 3,4 Q 3,3 4,3 Z"
                                       Fill="Transparent"
-                                      Stroke="#F4F8F5"
+                                      Stroke="{StaticResource AppBrushF4F8F5}"
                                       StrokeThickness="1.5"
                                       StrokeLineJoin="Round" />
                                 <Path Data="M 6,7 L 12,7 M 6,10 L 12,10 M 6,13 L 10,13"
-                                      Stroke="#8DE6B1"
+                                      Stroke="{StaticResource AppBrush8DE6B1}"
                                       StrokeThickness="1.5"
                                       StrokeStartLineCap="Round"
                                       StrokeEndLineCap="Round" />
@@ -366,26 +366,26 @@
                         <DockPanel Margin="0,0,0,8">
                             <TextBlock Text="Журнал действий"
                                        DockPanel.Dock="Left"
-                                       Foreground="#F4F8F5"
+                                       Foreground="{StaticResource AppBrushF4F8F5}"
                                        FontSize="13"
                                        FontWeight="SemiBold" />
                             <TextBlock Text="последние 50"
                                        HorizontalAlignment="Right"
-                                       Foreground="#7F8D84"
+                                       Foreground="{StaticResource AppBrush7F8D84}"
                                        FontSize="11" />
                         </DockPanel>
 
                         <ui:LiquidHoverBorder Grid.Row="1"
                                                  CornerRadius="8"
-                                                  BaseColor="#111714"
+                                                  BaseColor="{StaticResource AppColor111714}"
                                                   IsLiquidEnabled="False"
                                                   SurfaceOpacity="0.20"
-                                                 BorderBrush="#25342C"
+                                                 BorderBrush="{StaticResource AppBrush25342C}"
                                                  BorderThickness="1">
                             <ListBox x:Name="ActivityLogList"
                                      Background="Transparent"
                                      BorderThickness="0"
-                                     Foreground="#D7E4DC"
+                                     Foreground="{StaticResource AppBrushD7E4DC}"
                                      IsTabStop="False"
                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -419,18 +419,18 @@
                                                         <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
                                                     <TextBlock Text="{Binding TimeText}"
-                                                               Foreground="#8DE6B1"
+                                                               Foreground="{StaticResource AppBrush8DE6B1}"
                                                                FontFamily="Consolas"
                                                                FontSize="11" />
                                                     <TextBlock Grid.Column="1"
                                                                Text="{Binding Title}"
-                                                               Foreground="#D7E4DC"
+                                                               Foreground="{StaticResource AppBrushD7E4DC}"
                                                                FontSize="12"
                                                                TextTrimming="CharacterEllipsis" />
                                                 </Grid>
                                             </Expander.Header>
                                             <TextBlock Text="{Binding Details}"
-                                                       Foreground="#B9C4BE"
+                                                       Foreground="{StaticResource AppBrushB9C4BE}"
                                                        FontSize="12"
                                                        TextWrapping="Wrap" />
                                         </Expander>

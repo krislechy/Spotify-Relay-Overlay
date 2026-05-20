@@ -5,6 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SpotifyFavoritesTool.UI;component/Colors.xaml" />
                 <ResourceDictionary Source="/SpotifyFavoritesTool.UI;component/ElementStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

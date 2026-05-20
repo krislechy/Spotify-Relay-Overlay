@@ -6,9 +6,9 @@
     </Style>
 
     <Style TargetType="{x:Type ToolTip}">
-        <Setter Property="Foreground" Value="#F4F8F5" />
-        <Setter Property="Background" Value="#17201B" />
-        <Setter Property="BorderBrush" Value="#365142" />
+        <Setter Property="Foreground" Value="{StaticResource AppBrushF4F8F5}" />
+        <Setter Property="Background" Value="{StaticResource AppBrush17201B}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AppBrush365142}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="9,6" />
         <Setter Property="FontSize" Value="12" />
@@ -27,7 +27,7 @@
                             <DropShadowEffect BlurRadius="14"
                                               ShadowDepth="0"
                                               Opacity="0.30"
-                                              Color="#000000" />
+                                              Color="{StaticResource AppColor000000}" />
                         </Border.Effect>
                         <ContentPresenter RecognizesAccessKey="True" />
                     </Border>
@@ -53,7 +53,7 @@
         <Setter Property="MinHeight" Value="34" />
         <Setter Property="MinWidth" Value="34" />
         <!--<Setter Property="CornerRadius" Value="15"/>-->
-        <Setter Property="Background" Value="#7F9A8A" />
+        <Setter Property="Background" Value="{StaticResource AppBrush7F9A8A}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
@@ -69,11 +69,11 @@
                             <Setter TargetName="ThumbRoot" Property="Margin" Value="2,1,2,2" />
                         </DataTrigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="ThumbRoot" Property="Background" Value="#8FAF9C" />
+                            <Setter TargetName="ThumbRoot" Property="Background" Value="{StaticResource AppBrush8FAF9C}" />
                             <Setter TargetName="ThumbRoot" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsDragging" Value="True">
-                            <Setter TargetName="ThumbRoot" Property="Background" Value="#8DE6B1" />
+                            <Setter TargetName="ThumbRoot" Property="Background" Value="{StaticResource AppBrush8DE6B1}" />
                             <Setter TargetName="ThumbRoot" Property="Opacity" Value="1" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -85,7 +85,7 @@
     <Style TargetType="{x:Type ScrollBar}">
         <Setter Property="Width" Value="10" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="#789183" />
+        <Setter Property="Foreground" Value="{StaticResource AppBrush789183}" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
@@ -99,7 +99,7 @@
                                 Width="1"
                                 HorizontalAlignment="Right"
                                 Margin="0,4,5,4"
-                                Background="#241E2A24"
+                                Background="{StaticResource AppBrush241E2A24}"
                                 Opacity="0.40"
                                 CornerRadius="0.5" />
                         <Track x:Name="PART_Track"
@@ -162,12 +162,12 @@
         <Setter Property="Padding" Value="10,0" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="Background" Value="#202A24" />
-        <Setter Property="Foreground" Value="#F4F8F5" />
-        <Setter Property="BorderBrush" Value="#3D4B42" />
+        <Setter Property="Background" Value="{StaticResource AppBrush202A24}" />
+        <Setter Property="Foreground" Value="{StaticResource AppBrushF4F8F5}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AppBrush3D4B42}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CaretBrush" Value="#1ED760" />
-        <Setter Property="SelectionBrush" Value="#1ED760" />
+        <Setter Property="CaretBrush" Value="{StaticResource AppBrush1ED760}" />
+        <Setter Property="SelectionBrush" Value="{StaticResource AppBrush1ED760}" />
         <Setter Property="SelectionOpacity" Value="0.35" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="IsTabStop" Value="False" />
@@ -190,21 +190,21 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Root" Property="Background" Value="#243027" />
-                            <Setter TargetName="Root" Property="BorderBrush" Value="#4E6357" />
+                            <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush243027}" />
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush4E6357}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Root" Property="Background" Value="#1B2920" />
-                            <Setter TargetName="Root" Property="BorderBrush" Value="#1ED760" />
+                            <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush1B2920}" />
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush1ED760}" />
                         </Trigger>
                         <Trigger Property="IsReadOnly" Value="True">
-                            <Setter TargetName="Root" Property="Background" Value="#18201B" />
-                            <Setter TargetName="Root" Property="BorderBrush" Value="#334139" />
+                            <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush18201B}" />
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush334139}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#77847C" />
-                            <Setter TargetName="Root" Property="Background" Value="#171D19" />
-                            <Setter TargetName="Root" Property="BorderBrush" Value="#2A342D" />
+                            <Setter Property="Foreground" Value="{StaticResource AppBrush77847C}" />
+                            <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush171D19}" />
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush2A342D}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -252,9 +252,9 @@
         <Setter Property="Height" Value="38" />
         <Setter Property="MinHeight" Value="38" />
         <Setter Property="Padding" Value="10,0" />
-        <Setter Property="Background" Value="#202A24" />
-        <Setter Property="Foreground" Value="#F4F8F5" />
-        <Setter Property="BorderBrush" Value="#3D4B42" />
+        <Setter Property="Background" Value="{StaticResource AppBrush202A24}" />
+        <Setter Property="Foreground" Value="{StaticResource AppBrushF4F8F5}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AppBrush3D4B42}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
         <Setter Property="Template">
@@ -291,7 +291,7 @@
                                                   Grid.Column="1"
                                                   Width="9"
                                                   Height="5"
-                                                  Fill="#A9B9AF"
+                                                  Fill="{StaticResource AppBrushA9B9AF}"
                                                   Stretch="Fill"
                                                   HorizontalAlignment="Center"
                                                   VerticalAlignment="Center"
@@ -300,14 +300,14 @@
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="Root" Property="Background" Value="#243027" />
-                                            <Setter TargetName="Root" Property="BorderBrush" Value="#4E6357" />
-                                            <Setter TargetName="Arrow" Property="Fill" Value="#D7E4DC" />
+                                            <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush243027}" />
+                                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush4E6357}" />
+                                            <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource AppBrushD7E4DC}" />
                                         </Trigger>
                                         <Trigger Property="IsChecked" Value="True">
-                                            <Setter TargetName="Root" Property="Background" Value="#1B2920" />
-                                            <Setter TargetName="Root" Property="BorderBrush" Value="#1ED760" />
-                                            <Setter TargetName="Arrow" Property="Fill" Value="#1ED760" />
+                                            <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush1B2920}" />
+                                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource AppBrush1ED760}" />
+                                            <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource AppBrush1ED760}" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -329,8 +329,8 @@
                             <Border MinWidth="{TemplateBinding ActualWidth}"
                                     MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                     Margin="0,4,0,0"
-                                    Background="#17201B"
-                                    BorderBrush="#365142"
+                                    Background="{StaticResource AppBrush17201B}"
+                                    BorderBrush="{StaticResource AppBrush365142}"
                                     BorderThickness="1"
                                     CornerRadius="8"
                                     SnapsToDevicePixels="True">
@@ -338,7 +338,7 @@
                                     <DropShadowEffect BlurRadius="18"
                                                       ShadowDepth="0"
                                                       Opacity="0.34"
-                                                      Color="#000000" />
+                                                      Color="{StaticResource AppColor000000}" />
                                 </Border.Effect>
                                 <ScrollViewer Margin="4"
                                               VerticalScrollBarVisibility="Auto"
@@ -353,7 +353,7 @@
                             <Setter TargetName="PART_Popup" Property="MinHeight" Value="38" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#77847C" />
+                            <Setter Property="Foreground" Value="{StaticResource AppBrush77847C}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -364,7 +364,7 @@
     <Style TargetType="{x:Type ComboBoxItem}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="Foreground" Value="#F4F8F5" />
+        <Setter Property="Foreground" Value="{StaticResource AppBrushF4F8F5}" />
         <Setter Property="Padding" Value="10,8" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
@@ -379,13 +379,13 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="True">
-                            <Setter TargetName="Root" Property="Background" Value="#244F35" />
+                            <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush244F35}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Root" Property="Background" Value="#1B3D2A" />
+                            <Setter TargetName="Root" Property="Background" Value="{StaticResource AppBrush1B3D2A}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#77847C" />
+                            <Setter Property="Foreground" Value="{StaticResource AppBrush77847C}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
