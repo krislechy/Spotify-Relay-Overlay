@@ -491,7 +491,7 @@
                         <ComboBox x:Name="TranslationProviderBox"
                                   Grid.Row="2"
                                   SelectionChanged="TranslationProviderBox_SelectionChanged">
-                            <ComboBoxItem Content="DeepL API Free" />
+                            <ComboBoxItem Content="DeepL API" />
                             <ComboBoxItem Content="LibreTranslate" />
                             <ComboBoxItem Content="Google Translate unofficial" />
                         </ComboBox>
