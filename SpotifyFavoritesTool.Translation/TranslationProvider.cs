@@ -3,5 +3,6 @@ namespace SpotifyFavoritesTool;
 public enum TranslationProvider
 {
     DeepL,
-    LibreTranslate
+    LibreTranslate,
+    GoogleTranslate
 }

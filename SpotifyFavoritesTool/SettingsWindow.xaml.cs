@@ -23,7 +23,12 @@ public partial class SettingsWindow : Window
         _favoriteStatusHotkeyDisplayName = GetHotkeyDisplayName(_favoriteStatusHotkeyVirtualKey, _settings.Current.FavoriteStatusHotkeyDisplayName);
 
         ClientIdBox.Text = _settings.Current.ClientId;
-        TranslationProviderBox.SelectedIndex = _settings.Current.TranslationProvider == TranslationProvider.LibreTranslate ? 1 : 0;
+        TranslationProviderBox.SelectedIndex = _settings.Current.TranslationProvider switch
+        {
+            TranslationProvider.LibreTranslate => 1,
+            TranslationProvider.GoogleTranslate => 2,
+            _ => 0
+        };
         DeepLApiKeyBox.Text = _settings.Current.DeepLApiKey;
         DeepLTargetLanguageBox.Text = string.IsNullOrWhiteSpace(_settings.Current.DeepLTargetLanguage)
             ? "RU"
@@ -199,9 +204,12 @@ public partial class SettingsWindow : Window
         }
 
         _settings.Current.ClientId = ClientIdBox.Text.Trim();
-        _settings.Current.TranslationProvider = TranslationProviderBox.SelectedIndex == 1
-            ? TranslationProvider.LibreTranslate
-            : TranslationProvider.DeepL;
+        _settings.Current.TranslationProvider = TranslationProviderBox.SelectedIndex switch
+        {
+            1 => TranslationProvider.LibreTranslate,
+            2 => TranslationProvider.GoogleTranslate,
+            _ => TranslationProvider.DeepL
+        };
         _settings.Current.DeepLApiKey = DeepLApiKeyBox.Text.Trim();
         _settings.Current.DeepLTargetLanguage = string.IsNullOrWhiteSpace(DeepLTargetLanguageBox.Text)
             ? "RU"
@@ -225,8 +233,10 @@ public partial class SettingsWindow : Window
             return;
         }
 
-        var isLibre = TranslationProviderBox.SelectedIndex == 1;
-        DeepLApiKeyBox.Visibility = isLibre ? Visibility.Collapsed : Visibility.Visible;
+        var selectedProvider = TranslationProviderBox.SelectedIndex;
+        var isDeepL = selectedProvider == 0;
+        var isLibre = selectedProvider == 1;
+        DeepLApiKeyBox.Visibility = isDeepL ? Visibility.Visible : Visibility.Collapsed;
         LibreTranslatePanel.Visibility = isLibre ? Visibility.Visible : Visibility.Collapsed;
     }
 

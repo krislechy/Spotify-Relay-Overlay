@@ -15,6 +15,7 @@
     <ProjectReference Include="..\SpotifyFavoritesTool.Translation\SpotifyFavoritesTool.Translation.csproj" />
     <ProjectReference Include="..\SpotifyFavoritesTool.Translation.DeepL\SpotifyFavoritesTool.Translation.DeepL.csproj" />
     <ProjectReference Include="..\SpotifyFavoritesTool.Translation.Libre\SpotifyFavoritesTool.Translation.Libre.csproj" />
+    <ProjectReference Include="..\SpotifyFavoritesTool.Translation.Google\SpotifyFavoritesTool.Translation.Google.csproj" />
   </ItemGroup>
 
 </Project>

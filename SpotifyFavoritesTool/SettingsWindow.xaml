@@ -493,6 +493,7 @@
                                   SelectionChanged="TranslationProviderBox_SelectionChanged">
                             <ComboBoxItem Content="DeepL API Free" />
                             <ComboBoxItem Content="LibreTranslate" />
+                            <ComboBoxItem Content="Google Translate unofficial" />
                         </ComboBox>
                         <TextBox x:Name="DeepLApiKeyBox"
                                  Grid.Row="3"

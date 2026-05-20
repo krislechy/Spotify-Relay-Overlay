@@ -67,9 +67,12 @@ public partial class OverlayWindow : Window, IDisposable
         string? targetLanguage)
     {
         _translationProvider = translationProvider;
-        _translationService = translationProvider == TranslationProvider.LibreTranslate
-            ? new LibreTranslationService()
-            : new DeepLTranslationService();
+        _translationService = translationProvider switch
+        {
+            TranslationProvider.LibreTranslate => new LibreTranslationService(),
+            TranslationProvider.GoogleTranslate => new GoogleTranslationService(),
+            _ => new DeepLTranslationService()
+        };
         _translationApiKey = translationProvider == TranslationProvider.LibreTranslate
             ? libreTranslateApiKey ?? string.Empty
             : deepLApiKey ?? string.Empty;
