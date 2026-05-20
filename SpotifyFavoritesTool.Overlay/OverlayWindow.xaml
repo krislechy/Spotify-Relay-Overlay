@@ -741,23 +741,23 @@
                                    VerticalAlignment="Center" />
                     </Grid>
 
-                    <ScrollViewer Grid.Row="1"
-                                  VerticalScrollBarVisibility="Auto"
-                                  HorizontalScrollBarVisibility="Disabled"
-                                  CanContentScroll="False">
-                        <TextBox x:Name="PlainLyricsText"
-                                 Visibility="Collapsed"
-                                 TextWrapping="Wrap"
-                                 AcceptsReturn="True"
-                                 IsReadOnly="True"
-                                 BorderThickness="0"
-                                 Background="Transparent"
-                                 Foreground="#D7E4DC"
-                                 FontSize="12.5"
-                                 Padding="0"
-                                 IsTabStop="False"
-                                 SelectionChanged="PlainLyricsText_SelectionChanged" />
-                    </ScrollViewer>
+                    <TextBox x:Name="PlainLyricsText"
+                             Grid.Row="1"
+                             Visibility="Collapsed"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             IsReadOnly="True"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             Foreground="#D7E4DC"
+                             FontSize="12.5"
+                             Padding="0"
+                             IsTabStop="False"
+                             VerticalAlignment="Stretch"
+                             VerticalContentAlignment="Stretch"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Disabled"
+                             SelectionChanged="PlainLyricsText_SelectionChanged" />
                 </Grid>
             </ui:LiquidHoverBorder>
         </Grid>
