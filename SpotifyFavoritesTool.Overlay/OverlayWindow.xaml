@@ -754,7 +754,7 @@
                              Padding="0"
                              IsTabStop="False"
                              VerticalAlignment="Stretch"
-                             VerticalContentAlignment="Stretch"
+                             VerticalContentAlignment="Top"
                              VerticalScrollBarVisibility="Auto"
                              HorizontalScrollBarVisibility="Disabled"
                              SelectionChanged="PlainLyricsText_SelectionChanged" />
