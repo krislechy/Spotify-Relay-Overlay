@@ -333,6 +333,37 @@
                                 Content="Запустить Overlay"
                                 Click="OverlayButton_Click"
                                 ToolTip="Открыть отдельное окно оверлея поверх окон" />
+                        <Button x:Name="RestartTrackMonitorButton"
+                                Style="{StaticResource SquareActionButton}"
+                                Click="RestartTrackMonitorButton_Click"
+                                ToolTip="Перезапустить слушание треков">
+                            <Canvas Width="18"
+                                    Height="18"
+                                    IsHitTestVisible="False">
+                                <Path Data="M 14,6 A 6,6 0 1 0 14,12"
+                                      Stroke="{StaticResource AppBrush8DE6B1}"
+                                      StrokeThickness="1.6"
+                                      StrokeStartLineCap="Round"
+                                      StrokeEndLineCap="Round" />
+                                <Path Data="M 14,3.5 L 14,6 L 11.5,6"
+                                      Stroke="{StaticResource AppBrush8DE6B1}"
+                                      StrokeThickness="1.6"
+                                      StrokeLineJoin="Round"
+                                      StrokeStartLineCap="Round"
+                                      StrokeEndLineCap="Round" />
+                                <Path Data="M 4,12 A 6,6 0 1 0 4,6"
+                                      Stroke="{StaticResource AppBrushF4F8F5}"
+                                      StrokeThickness="1.6"
+                                      StrokeStartLineCap="Round"
+                                      StrokeEndLineCap="Round" />
+                                <Path Data="M 4,14.5 L 4,12 L 6.5,12"
+                                      Stroke="{StaticResource AppBrushF4F8F5}"
+                                      StrokeThickness="1.6"
+                                      StrokeLineJoin="Round"
+                                      StrokeStartLineCap="Round"
+                                      StrokeEndLineCap="Round" />
+                            </Canvas>
+                        </Button>
                         <Button x:Name="ActivityLogToggleButton"
                                 Style="{StaticResource SquareActionButton}"
                                 Click="ActivityLogToggleButton_Click"

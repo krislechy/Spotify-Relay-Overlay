@@ -43,7 +43,7 @@ public partial class MainWindow : Window
         _spotify = new SpotifyClient(_auth);
         _favorites = new FavoriteTrackService(_spotify);
         ActivityLogList.ItemsSource = _activityLog.Entries;
-        _trayIcon = new TrayIconController(Dispatcher, BringMainWindowToFront, ShowSettingsWindow, ExitApplication);
+        _trayIcon = new TrayIconController(Dispatcher, BringMainWindowToFront, ShowSettingsWindow, RestartTrackMonitorFromTray, ExitApplication);
         Log("Приложение запущено.");
     }
 
@@ -114,6 +114,16 @@ public partial class MainWindow : Window
         ActivityLogPanel.Visibility = shouldShow ? Visibility.Visible : Visibility.Collapsed;
         ActivityLogToggleButton.ToolTip = shouldShow ? "Скрыть журнал действий" : "Показать журнал действий";
         Height = shouldShow ? ExpandedLogHeight : CompactHeight;
+    }
+
+    private async void RestartTrackMonitorButton_Click(object? sender, EventArgs e)
+    {
+        await RestartTrackMonitorAsync();
+    }
+
+    private void RestartTrackMonitorFromTray()
+    {
+        RestartTrackMonitorButton_Click(this, EventArgs.Empty);
     }
 
     private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -297,6 +307,24 @@ public partial class MainWindow : Window
         }
     }
 
+    private async Task RestartTrackMonitorAsync()
+    {
+        if (!_auth.HasRefreshToken)
+        {
+            StopTrackMonitor(clearCache: true);
+            UpdateStatus("Spotify не подключен.");
+            Log("Слушание треков не перезапущено: Spotify не подключен.");
+            return;
+        }
+
+        Log("Перезапуск слушания треков.");
+        StopTrackMonitor(clearCache: false);
+        StartTrackMonitorIfReady();
+        await CheckTrackChangeAsync();
+        await RefreshOverlayAsync();
+        Log("Слушание треков перезапущено.");
+    }
+
     private async void TrackMonitorTimer_Tick(object? sender, EventArgs e)
     {
         await CheckTrackChangeAsync();
@@ -377,6 +405,7 @@ public partial class MainWindow : Window
         overlay.PreviousRequested += OverlayWindow_PreviousRequested;
         overlay.PlayPauseRequested += OverlayWindow_PlayPauseRequested;
         overlay.NextRequested += OverlayWindow_NextRequested;
+        overlay.TrackMonitorRestartRequested += RestartTrackMonitorButton_Click;
         overlay.CachedTrackPlayRequested += OverlayWindow_CachedTrackPlayRequested;
         overlay.CachedTrackFavoriteRequested += OverlayWindow_CachedTrackFavoriteRequested;
         overlay.Closed += OverlayWindow_Closed;
@@ -388,6 +417,7 @@ public partial class MainWindow : Window
         overlay.PreviousRequested -= OverlayWindow_PreviousRequested;
         overlay.PlayPauseRequested -= OverlayWindow_PlayPauseRequested;
         overlay.NextRequested -= OverlayWindow_NextRequested;
+        overlay.TrackMonitorRestartRequested -= RestartTrackMonitorButton_Click;
         overlay.CachedTrackPlayRequested -= OverlayWindow_CachedTrackPlayRequested;
         overlay.CachedTrackFavoriteRequested -= OverlayWindow_CachedTrackFavoriteRequested;
         overlay.Closed -= OverlayWindow_Closed;

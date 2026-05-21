@@ -352,7 +352,7 @@
                 </Button>
                 <Button x:Name="KaraokeToggleButton"
                         Style="{StaticResource TransportButton}"
-                        Margin="0"
+                        Margin="0,0,8,0"
                         Click="KaraokeToggleButton_Click"
                         ToolTip="Показать текст песни">
                     <Canvas Width="16"
@@ -370,6 +370,38 @@
                         <Path Data="M 6,6.3 L 11,6.3 M 6,8.5 L 11,8.5 M 6,10.7 L 9.5,10.7"
                               Stroke="{StaticResource AppBrushF4F8F5}"
                               StrokeThickness="1.25"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round" />
+                    </Canvas>
+                </Button>
+                <Button x:Name="RestartTrackMonitorButton"
+                        Style="{StaticResource TransportButton}"
+                        Margin="0"
+                        Click="RestartTrackMonitorButton_Click"
+                        ToolTip="Перезапустить слушание треков">
+                    <Canvas Width="16"
+                            Height="16"
+                            IsHitTestVisible="False">
+                        <Path Data="M 12.5,5.2 A 5,5 0 1 0 13,10"
+                              Stroke="{StaticResource AppBrush8DE6B1}"
+                              StrokeThickness="1.45"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round" />
+                        <Path Data="M 12.5,2.8 L 12.5,5.2 L 10.2,5.2"
+                              Stroke="{StaticResource AppBrush8DE6B1}"
+                              StrokeThickness="1.45"
+                              StrokeLineJoin="Round"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round" />
+                        <Path Data="M 3.5,10.8 A 5,5 0 1 0 3,6"
+                              Stroke="{StaticResource AppBrushF4F8F5}"
+                              StrokeThickness="1.45"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round" />
+                        <Path Data="M 3.5,13.2 L 3.5,10.8 L 5.8,10.8"
+                              Stroke="{StaticResource AppBrushF4F8F5}"
+                              StrokeThickness="1.45"
+                              StrokeLineJoin="Round"
                               StrokeStartLineCap="Round"
                               StrokeEndLineCap="Round" />
                     </Canvas>
