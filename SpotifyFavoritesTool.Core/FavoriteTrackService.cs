@@ -157,7 +157,9 @@ public sealed class FavoriteTrackService
         AddSection(
             result,
             seen,
-            cachedTracks.Where(track => !IsCurrentTrack(track, currentTrack) && !queueUris.Contains(track.Uri)),
+            cachedTracks
+                .Reverse()
+                .Where(track => !IsCurrentTrack(track, currentTrack) && !queueUris.Contains(track.Uri)),
             OverlayTrackSection.RecentlyPlayed);
 
         if (currentTrack is not null)
