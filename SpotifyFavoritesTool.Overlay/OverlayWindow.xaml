@@ -374,11 +374,11 @@
                               StrokeEndLineCap="Round" />
                     </Canvas>
                 </Button>
-                <Button x:Name="RestartTrackMonitorButton"
+                <Button x:Name="TrackSyncButton"
                         Style="{StaticResource TransportButton}"
                         Margin="0"
-                        Click="RestartTrackMonitorButton_Click"
-                        ToolTip="Перезапустить слушание треков">
+                        Click="TrackSyncButton_Click"
+                        ToolTip="Синхронизация">
                     <Canvas Width="16"
                             Height="16"
                             IsHitTestVisible="False">

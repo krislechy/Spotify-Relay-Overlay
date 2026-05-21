@@ -10,7 +10,7 @@ public sealed class TrayIconController : IDisposable
     private readonly Dispatcher _dispatcher;
     private readonly Action _showMainWindow;
     private readonly Action _showSettings;
-    private readonly Action _restartTrackMonitor;
+    private readonly Action _syncTracks;
     private readonly Action _exitApplication;
     private readonly Forms.NotifyIcon _icon;
 
@@ -18,13 +18,13 @@ public sealed class TrayIconController : IDisposable
         Dispatcher dispatcher,
         Action showMainWindow,
         Action showSettings,
-        Action restartTrackMonitor,
+        Action syncTracks,
         Action exitApplication)
     {
         _dispatcher = dispatcher;
         _showMainWindow = showMainWindow;
         _showSettings = showSettings;
-        _restartTrackMonitor = restartTrackMonitor;
+        _syncTracks = syncTracks;
         _exitApplication = exitApplication;
 
         _icon = new Forms.NotifyIcon
@@ -56,7 +56,7 @@ public sealed class TrayIconController : IDisposable
 
         AddMenuItem(menu, "Открыть", (_, _) => Invoke(_showMainWindow));
         AddMenuItem(menu, "Настройки", (_, _) => Invoke(_showSettings));
-        AddMenuItem(menu, "Перезапустить слушание", (_, _) => Invoke(_restartTrackMonitor));
+        AddMenuItem(menu, "Синхронизация", (_, _) => Invoke(_syncTracks));
         menu.Items.Add(new Forms.ToolStripSeparator());
         AddMenuItem(menu, "Выход", (_, _) => Invoke(_exitApplication));
         return menu;

@@ -40,7 +40,7 @@ public partial class OverlayWindow : Window, IDisposable
     public event EventHandler? PreviousRequested;
     public event EventHandler? PlayPauseRequested;
     public event EventHandler? NextRequested;
-    public event EventHandler? TrackMonitorRestartRequested;
+    public event EventHandler? TrackSyncRequested;
     public event EventHandler<TrackRequestedEventArgs>? CachedTrackPlayRequested;
     public event EventHandler<TrackRequestedEventArgs>? CachedTrackFavoriteRequested;
 
@@ -157,7 +157,7 @@ public partial class OverlayWindow : Window, IDisposable
         PreviousRequested = null;
         PlayPauseRequested = null;
         NextRequested = null;
-        TrackMonitorRestartRequested = null;
+        TrackSyncRequested = null;
         CachedTrackPlayRequested = null;
         CachedTrackFavoriteRequested = null;
     }
@@ -218,9 +218,9 @@ public partial class OverlayWindow : Window, IDisposable
         NextRequested?.Invoke(this, EventArgs.Empty);
     }
 
-    private void RestartTrackMonitorButton_Click(object sender, RoutedEventArgs e)
+    private void TrackSyncButton_Click(object sender, RoutedEventArgs e)
     {
-        TrackMonitorRestartRequested?.Invoke(this, EventArgs.Empty);
+        TrackSyncRequested?.Invoke(this, EventArgs.Empty);
     }
 
     private void HistoryToggleButton_Click(object sender, RoutedEventArgs e)

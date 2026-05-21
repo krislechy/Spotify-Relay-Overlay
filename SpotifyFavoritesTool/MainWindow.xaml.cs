@@ -43,7 +43,7 @@ public partial class MainWindow : Window
         _spotify = new SpotifyClient(_auth);
         _favorites = new FavoriteTrackService(_spotify);
         ActivityLogList.ItemsSource = _activityLog.Entries;
-        _trayIcon = new TrayIconController(Dispatcher, BringMainWindowToFront, ShowSettingsWindow, RestartTrackMonitorFromTray, ExitApplication);
+        _trayIcon = new TrayIconController(Dispatcher, BringMainWindowToFront, ShowSettingsWindow, SyncTracksFromTray, ExitApplication);
         Log("Приложение запущено.");
     }
 
@@ -116,14 +116,14 @@ public partial class MainWindow : Window
         Height = shouldShow ? ExpandedLogHeight : CompactHeight;
     }
 
-    private async void RestartTrackMonitorButton_Click(object? sender, EventArgs e)
+    private async void TrackSyncButton_Click(object? sender, EventArgs e)
     {
-        await RestartTrackMonitorAsync();
+        await SyncTracksAsync();
     }
 
-    private void RestartTrackMonitorFromTray()
+    private void SyncTracksFromTray()
     {
-        RestartTrackMonitorButton_Click(this, EventArgs.Empty);
+        TrackSyncButton_Click(this, EventArgs.Empty);
     }
 
     private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -307,22 +307,22 @@ public partial class MainWindow : Window
         }
     }
 
-    private async Task RestartTrackMonitorAsync()
+    private async Task SyncTracksAsync()
     {
         if (!_auth.HasRefreshToken)
         {
             StopTrackMonitor(clearCache: true);
             UpdateStatus("Spotify не подключен.");
-            Log("Слушание треков не перезапущено: Spotify не подключен.");
+            Log("Синхронизация недоступна: Spotify не подключен.");
             return;
         }
 
-        Log("Перезапуск слушания треков.");
+        Log("Синхронизация.");
         StopTrackMonitor(clearCache: false);
         StartTrackMonitorIfReady();
         await CheckTrackChangeAsync();
         await RefreshOverlayAsync();
-        Log("Слушание треков перезапущено.");
+        Log("Синхронизация завершена.");
     }
 
     private async void TrackMonitorTimer_Tick(object? sender, EventArgs e)
@@ -405,7 +405,7 @@ public partial class MainWindow : Window
         overlay.PreviousRequested += OverlayWindow_PreviousRequested;
         overlay.PlayPauseRequested += OverlayWindow_PlayPauseRequested;
         overlay.NextRequested += OverlayWindow_NextRequested;
-        overlay.TrackMonitorRestartRequested += RestartTrackMonitorButton_Click;
+        overlay.TrackSyncRequested += TrackSyncButton_Click;
         overlay.CachedTrackPlayRequested += OverlayWindow_CachedTrackPlayRequested;
         overlay.CachedTrackFavoriteRequested += OverlayWindow_CachedTrackFavoriteRequested;
         overlay.Closed += OverlayWindow_Closed;
@@ -417,7 +417,7 @@ public partial class MainWindow : Window
         overlay.PreviousRequested -= OverlayWindow_PreviousRequested;
         overlay.PlayPauseRequested -= OverlayWindow_PlayPauseRequested;
         overlay.NextRequested -= OverlayWindow_NextRequested;
-        overlay.TrackMonitorRestartRequested -= RestartTrackMonitorButton_Click;
+        overlay.TrackSyncRequested -= TrackSyncButton_Click;
         overlay.CachedTrackPlayRequested -= OverlayWindow_CachedTrackPlayRequested;
         overlay.CachedTrackFavoriteRequested -= OverlayWindow_CachedTrackFavoriteRequested;
         overlay.Closed -= OverlayWindow_Closed;

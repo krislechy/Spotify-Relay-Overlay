@@ -333,10 +333,10 @@
                                 Content="Запустить Overlay"
                                 Click="OverlayButton_Click"
                                 ToolTip="Открыть отдельное окно оверлея поверх окон" />
-                        <Button x:Name="RestartTrackMonitorButton"
+                        <Button x:Name="TrackSyncButton"
                                 Style="{StaticResource SquareActionButton}"
-                                Click="RestartTrackMonitorButton_Click"
-                                ToolTip="Перезапустить слушание треков">
+                                Click="TrackSyncButton_Click"
+                                ToolTip="Синхронизация">
                             <Canvas Width="18"
                                     Height="18"
                                     IsHitTestVisible="False">
