@@ -109,21 +109,3 @@ public sealed class QueueResponse
     [JsonPropertyName("queue")]
     public SpotifyItem[]? Queue { get; set; }
 }
-
-public sealed class RecentlyPlayedResponse
-{
-    [JsonPropertyName("items")]
-    public RecentlyPlayedItem[]? Items { get; set; }
-}
-
-public sealed class RecentlyPlayedItem
-{
-    [JsonPropertyName("track")]
-    public SpotifyItem? Track { get; set; }
-
-    [JsonPropertyName("played_at")]
-    public DateTimeOffset? PlayedAt { get; set; }
-
-    [JsonPropertyName("context")]
-    public SpotifyPlaybackContext? Context { get; set; }
-}

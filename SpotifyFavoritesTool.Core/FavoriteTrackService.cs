@@ -18,8 +18,7 @@ public sealed class FavoriteTrackService
     {
         var currentTrack = LastObservedTrack;
         var queueTracks = await _spotify.GetQueueTracksAsync(currentTrack, cancellationToken);
-        var recentlyPlayedTracks = await _spotify.GetRecentlyPlayedTracksAsync(cancellationToken);
-        var streamTracks = BuildPlaybackStream(queueTracks, currentTrack, recentlyPlayedTracks, CachedTracks);
+        var streamTracks = BuildPlaybackStream(queueTracks, currentTrack, CachedTracks);
 
         return new OverlayTrackList(
             "Очередь Spotify",
@@ -147,7 +146,6 @@ public sealed class FavoriteTrackService
     private static IReadOnlyList<OverlayTrackListItem> BuildPlaybackStream(
         IReadOnlyList<PlaybackTrack> queueTracks,
         PlaybackTrack? currentTrack,
-        IReadOnlyList<PlaybackTrack> recentlyPlayedTracks,
         IReadOnlyList<PlaybackTrack> cachedTracks)
     {
         var result = new List<OverlayTrackListItem>();
@@ -155,19 +153,11 @@ public sealed class FavoriteTrackService
         var queueUris = queueTracks
             .Select(track => track.Uri)
             .ToHashSet(StringComparer.Ordinal);
-        var recentlyPlayedUris = recentlyPlayedTracks
-            .Select(track => track.Uri)
-            .ToHashSet(StringComparer.Ordinal);
-        var missedLocalHistory = cachedTracks
-            .Reverse()
-            .Where(track => !recentlyPlayedUris.Contains(track.Uri));
 
         AddSection(
             result,
             seen,
-            recentlyPlayedTracks
-                .Concat(missedLocalHistory)
-                .Where(track => !IsCurrentTrack(track, currentTrack) && !queueUris.Contains(track.Uri)),
+            cachedTracks.Where(track => !IsCurrentTrack(track, currentTrack) && !queueUris.Contains(track.Uri)),
             OverlayTrackSection.RecentlyPlayed);
 
         if (currentTrack is not null)

@@ -136,23 +136,6 @@ public sealed class SpotifyClient
         return tracks;
     }
 
-    public async Task<IReadOnlyList<PlaybackTrack>> GetRecentlyPlayedTracksAsync(CancellationToken cancellationToken = default)
-    {
-        if (_auth.KnowsGrantedScopes && !_auth.HasRecentlyPlayedScopes)
-        {
-            throw new InvalidOperationException(BuildScopeError("недавно прослушанных треков", SpotifyAuthService.RecentlyPlayedScopes));
-        }
-
-        var response = await SendAsync(HttpMethod.Get, $"{ApiRoot}/me/player/recently-played?limit=20", cancellationToken);
-        var recentlyPlayed = JsonSerializer.Deserialize<RecentlyPlayedResponse>(response.Body, JsonOptions);
-        return recentlyPlayed?.Items?
-            .Where(item => item.Track is not null && IsTrackItem(item.Track))
-            .OrderBy(item => item.PlayedAt ?? DateTimeOffset.MinValue)
-            .Select(item => CreateTrack(item.Track!, contextUri: item.Context?.Uri, isPlaying: false, progressMs: null))
-            .ToArray()
-            ?? Array.Empty<PlaybackTrack>();
-    }
-
     public async Task SkipToPreviousTrackAsync(CancellationToken cancellationToken = default)
     {
         await SendPlaybackCommandAsync(HttpMethod.Post, "previous", cancellationToken);
@@ -383,11 +366,6 @@ public sealed class SpotifyClient
         if (url.Contains("/me/player/queue", StringComparison.OrdinalIgnoreCase))
         {
             return "получение очереди Spotify";
-        }
-
-        if (url.Contains("/me/player/recently-played", StringComparison.OrdinalIgnoreCase))
-        {
-            return "получение недавно прослушанных треков";
         }
 
         if (url.Contains("/me/player/previous", StringComparison.OrdinalIgnoreCase))

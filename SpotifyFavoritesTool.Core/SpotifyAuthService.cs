@@ -14,8 +14,7 @@ public sealed class SpotifyAuthService
     public const int RedirectPort = 53154;
     public const string RedirectUri = "http://127.0.0.1:53154/callback/";
     public const string PlaybackReadScopes = "user-read-currently-playing user-read-playback-state";
-    public const string RecentlyPlayedScopes = "user-read-recently-played";
-    public const string FavoriteScopes = $"{PlaybackReadScopes} {RecentlyPlayedScopes} user-library-read user-library-modify";
+    public const string FavoriteScopes = $"{PlaybackReadScopes} user-library-read user-library-modify";
     public const string PlaybackControlScopes = "user-modify-playback-state";
     public const string PlaylistReadScopes = "playlist-read-private playlist-read-collaborative";
     public const string RequiredScopes = $"{FavoriteScopes} {PlaybackControlScopes} {PlaylistReadScopes}";
@@ -38,7 +37,6 @@ public sealed class SpotifyAuthService
     public string GrantedScopes => _settings.Current.GrantedScopes;
     public bool KnowsGrantedScopes => !string.IsNullOrWhiteSpace(_settings.Current.GrantedScopes);
     public bool HasPlaybackReadScopes => HasScopes(_settings.Current.GrantedScopes, PlaybackReadScopes.Split(' ', StringSplitOptions.RemoveEmptyEntries));
-    public bool HasRecentlyPlayedScopes => HasScopes(_settings.Current.GrantedScopes, RecentlyPlayedScopes.Split(' ', StringSplitOptions.RemoveEmptyEntries));
     public bool HasFavoriteScopes => HasScopes(_settings.Current.GrantedScopes, FavoriteScopes.Split(' ', StringSplitOptions.RemoveEmptyEntries));
     public bool HasPlaybackControlScopes => HasScopes(_settings.Current.GrantedScopes, PlaybackControlScopes.Split(' ', StringSplitOptions.RemoveEmptyEntries));
     public bool HasPlaylistReadScopes => HasScopes(_settings.Current.GrantedScopes, PlaylistReadScopes.Split(' ', StringSplitOptions.RemoveEmptyEntries));
