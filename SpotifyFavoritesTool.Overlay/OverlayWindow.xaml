@@ -124,6 +124,7 @@
                              Padding="12"
                              CornerRadius="12"
                              BaseColor="{StaticResource AppColor101512}"
+                             IsLiquidEnabled="False"
                              SurfaceOpacity="0.42"
                              BorderBrush="{StaticResource AppBrush365142}"
                              BorderThickness="1"
