@@ -164,8 +164,10 @@ public partial class OverlayWindow : Window, IDisposable
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
+        var helper = new WindowInteropHelper(this);
+        NativeMethods.EnableBlurredGlass(helper.Handle, HwndSource.FromHwnd(helper.Handle));
         PlaceNearTopRight();
-        NativeMethods.ForceTopmost(new WindowInteropHelper(this).Handle);
+        NativeMethods.ForceTopmost(helper.Handle);
     }
 
     private void Window_Closed(object? sender, EventArgs e)
