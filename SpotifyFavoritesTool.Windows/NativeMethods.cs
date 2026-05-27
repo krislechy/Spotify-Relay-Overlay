@@ -1,6 +1,4 @@
 using System.Runtime.InteropServices;
-using System.Windows.Interop;
-using System.Windows.Media;
 
 namespace SpotifyFavoritesTool;
 
@@ -17,9 +15,6 @@ public static class NativeMethods
     private const uint SwpNoactivate = 0x0010;
     private const uint SwpShowwindow = 0x0040;
     private const int SwShownormal = 1;
-    private const uint DwmBbEnable = 0x00000001;
-    private const int DwmwaSystemBackdropType = 38;
-    private const int DwmSystemBackdropTransientWindow = 3;
 
     private static readonly IntPtr HwndTopmost = new(-1);
     private static readonly IntPtr HwndBroadcast = new(0xffff);
@@ -58,15 +53,6 @@ public static class NativeMethods
         int cy,
         uint uFlags);
 
-    [DllImport("dwmapi.dll", PreserveSig = true)]
-    private static extern int DwmIsCompositionEnabled([MarshalAs(UnmanagedType.Bool)] out bool enabled);
-
-    [DllImport("dwmapi.dll", PreserveSig = true)]
-    private static extern int DwmEnableBlurBehindWindow(IntPtr hWnd, ref DwmBlurBehind blurBehind);
-
-    [DllImport("dwmapi.dll", PreserveSig = true)]
-    private static extern int DwmSetWindowAttribute(IntPtr hWnd, int attribute, ref int attributeValue, int attributeSize);
-
     public static void SignalExistingInstance()
     {
         if (ShowExistingWindowMessage != 0)
@@ -94,47 +80,5 @@ public static class NativeMethods
         }
 
         SetWindowPosNative(hWnd, HwndTopmost, 0, 0, 0, 0, SwpNomove | SwpNosize | SwpNoactivate | SwpShowwindow);
-    }
-
-    public static void EnableBlurredGlass(IntPtr hWnd, HwndSource? source)
-    {
-        if (hWnd == IntPtr.Zero)
-        {
-            return;
-        }
-
-        if (DwmIsCompositionEnabled(out var compositionEnabled) != 0 || !compositionEnabled)
-        {
-            return;
-        }
-
-        if (source?.CompositionTarget is { } compositionTarget)
-        {
-            compositionTarget.BackgroundColor = Colors.Transparent;
-        }
-
-        var backdropType = DwmSystemBackdropTransientWindow;
-        DwmSetWindowAttribute(hWnd, DwmwaSystemBackdropType, ref backdropType, Marshal.SizeOf<int>());
-
-        var blurBehind = new DwmBlurBehind
-        {
-            Flags = DwmBbEnable,
-            Enable = true
-        };
-        DwmEnableBlurBehindWindow(hWnd, ref blurBehind);
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    private struct DwmBlurBehind
-    {
-        public uint Flags;
-
-        [MarshalAs(UnmanagedType.Bool)]
-        public bool Enable;
-
-        public IntPtr BlurRegion;
-
-        [MarshalAs(UnmanagedType.Bool)]
-        public bool TransitionOnMaximized;
     }
 }

@@ -124,7 +124,7 @@
                              Padding="12"
                              CornerRadius="12"
                              BaseColor="{StaticResource AppColor101512}"
-                             SurfaceOpacity="0.42"
+                             SurfaceOpacity="1"
                              BorderBrush="{StaticResource AppBrush365142}"
                              BorderThickness="1"
                              SnapsToDevicePixels="True"
