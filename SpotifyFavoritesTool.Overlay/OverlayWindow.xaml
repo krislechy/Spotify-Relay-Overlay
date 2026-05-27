@@ -124,9 +124,9 @@
                              Margin="7"
                              Padding="12"
                              CornerRadius="12"
-                             BaseColor="{StaticResource AppColor101512}"
+                             BaseColor="{StaticResource AppColor203228}"
                              IsLiquidEnabled="False"
-                             SurfaceOpacity="0.003"
+                             SurfaceOpacity="0.0015"
                              BorderBrush="{StaticResource AppBrush365142}"
                              BorderThickness="1"
                              SnapsToDevicePixels="True"
@@ -411,11 +411,11 @@
                                      Height="276"
                                      Visibility="Collapsed"
                                      CornerRadius="10"
-                                     BaseColor="{StaticResource AppColor141B17}"
+                                     BaseColor="{StaticResource AppColor203228}"
                                      BorderBrush="{StaticResource AppBrush32483C}"
                                      BorderThickness="1"
                                      IsLiquidEnabled="False"
-                                     SurfaceOpacity="0.004">
+                                     SurfaceOpacity="0.002">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -739,11 +739,11 @@
                                   Height="276"
                                   Visibility="Collapsed"
                                   CornerRadius="10"
-                                  BaseColor="{StaticResource AppColor141B17}"
+                                  BaseColor="{StaticResource AppColor203228}"
                                   BorderBrush="{StaticResource AppBrush32483C}"
                                   BorderThickness="1"
                                   IsLiquidEnabled="False"
-                                  SurfaceOpacity="0.004">
+                                  SurfaceOpacity="0.002">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
