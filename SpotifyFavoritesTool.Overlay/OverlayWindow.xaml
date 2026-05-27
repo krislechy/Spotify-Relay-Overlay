@@ -131,6 +131,13 @@
                              BorderThickness="1"
                              SnapsToDevicePixels="True"
                              MouseLeftButtonDown="OverlayRoot_MouseLeftButtonDown">
+        <ui:LiquidHoverBorder.Effect>
+            <DropShadowEffect BlurRadius="18"
+                              ShadowDepth="0"
+                              Opacity="0.35"
+                              Color="{StaticResource AppColor000000}" />
+        </ui:LiquidHoverBorder.Effect>
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

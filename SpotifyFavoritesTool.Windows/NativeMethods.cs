@@ -60,9 +60,6 @@ public static class NativeMethods
     [DllImport("dwmapi.dll", PreserveSig = true)]
     private static extern int DwmIsCompositionEnabled([MarshalAs(UnmanagedType.Bool)] out bool enabled);
 
-    [DllImport("dwmapi.dll", PreserveSig = true)]
-    private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attribute, ref int value, int size);
-
     [DllImport("user32.dll", SetLastError = true)]
     private static extern int SetWindowCompositionAttribute(IntPtr hWnd, ref WindowCompositionAttributeData data);
 
@@ -122,8 +119,6 @@ public static class NativeMethods
             compositionTarget.BackgroundColor = Colors.Transparent;
         }
 
-        SetRoundedWindowCorners(hWnd);
-
         var accentPolicy = new AccentPolicy
         {
             AccentState = AccentEnableAcrylicBlurBehind,
@@ -147,19 +142,6 @@ public static class NativeMethods
         {
             Marshal.FreeHGlobal(accentPolicyPointer);
         }
-    }
-
-    public static void SetRoundedWindowCorners(IntPtr hWnd)
-    {
-        if (hWnd == IntPtr.Zero)
-        {
-            return;
-        }
-
-        const int dwmwaWindowCornerPreference = 33;
-        const int dwmwcpRound = 2;
-        var preference = dwmwcpRound;
-        DwmSetWindowAttribute(hWnd, dwmwaWindowCornerPreference, ref preference, sizeof(int));
     }
 
     public static void ApplyRoundedWindowRegion(IntPtr hWnd, HwndSource? source, double width, double height, double radius)

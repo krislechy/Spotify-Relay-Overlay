@@ -171,7 +171,6 @@ public partial class OverlayWindow : Window, IDisposable
         _windowSource = HwndSource.FromHwnd(_windowHandle);
         NativeMethods.EnableBlurredGlass(_windowHandle, _windowSource);
         ApplyWindowGlassShape();
-        Dispatcher.BeginInvoke(ApplyWindowGlassShape, DispatcherPriority.Loaded);
         PlaceNearTopRight();
         NativeMethods.ForceTopmost(_windowHandle);
     }
@@ -188,8 +187,7 @@ public partial class OverlayWindow : Window, IDisposable
 
     private void ApplyWindowGlassShape()
     {
-        NativeMethods.SetRoundedWindowCorners(_windowHandle);
-        NativeMethods.ApplyRoundedWindowRegion(_windowHandle, _windowSource, ActualWidth, ActualHeight, 24);
+        NativeMethods.ApplyRoundedWindowRegion(_windowHandle, _windowSource, ActualWidth, ActualHeight, 18);
     }
 
     private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
