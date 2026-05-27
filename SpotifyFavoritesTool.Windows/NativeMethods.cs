@@ -123,7 +123,7 @@ public static class NativeMethods
         {
             AccentState = AccentEnableAcrylicBlurBehind,
             AccentFlags = 2,
-            GradientColor = ToAbgr(0x62, 0x10, 0x15, 0x12)
+            GradientColor = ToAbgr(0x21, 0x10, 0x15, 0x12)
         };
         var accentPolicySize = Marshal.SizeOf<AccentPolicy>();
         var accentPolicyPointer = Marshal.AllocHGlobal(accentPolicySize);
