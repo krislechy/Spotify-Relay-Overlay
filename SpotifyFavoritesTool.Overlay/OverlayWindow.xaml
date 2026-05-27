@@ -18,6 +18,7 @@
         KeyboardNavigation.TabNavigation="None"
         KeyboardNavigation.ControlTabNavigation="None"
         Loaded="Window_Loaded"
+        SizeChanged="Window_SizeChanged"
         Closed="Window_Closed"
         PreviewKeyDown="Window_PreviewKeyDown">
     <Window.Resources>
@@ -125,7 +126,7 @@
                              CornerRadius="12"
                              BaseColor="{StaticResource AppColor101512}"
                              IsLiquidEnabled="False"
-                             SurfaceOpacity="0.42"
+                             SurfaceOpacity="0.18"
                              BorderBrush="{StaticResource AppBrush365142}"
                              BorderThickness="1"
                              SnapsToDevicePixels="True"

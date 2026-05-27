@@ -32,6 +32,8 @@ public partial class OverlayWindow : Window, IDisposable
     private string _translationApiKey = string.Empty;
     private string _translationTargetLanguage = "RU";
     private Uri? _translationEndpoint;
+    private HwndSource? _windowSource;
+    private IntPtr _windowHandle;
     private bool _isHistoryExpanded;
     private bool _isKaraokeExpanded;
     private bool _disposed;
@@ -165,14 +167,27 @@ public partial class OverlayWindow : Window, IDisposable
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
         var helper = new WindowInteropHelper(this);
-        NativeMethods.EnableBlurredGlass(helper.Handle, HwndSource.FromHwnd(helper.Handle));
+        _windowHandle = helper.Handle;
+        _windowSource = HwndSource.FromHwnd(_windowHandle);
+        NativeMethods.EnableBlurredGlass(_windowHandle, _windowSource);
+        ApplyWindowGlassShape();
         PlaceNearTopRight();
-        NativeMethods.ForceTopmost(helper.Handle);
+        NativeMethods.ForceTopmost(_windowHandle);
+    }
+
+    private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        ApplyWindowGlassShape();
     }
 
     private void Window_Closed(object? sender, EventArgs e)
     {
         Dispose();
+    }
+
+    private void ApplyWindowGlassShape()
+    {
+        NativeMethods.ApplyRoundedWindowRegion(_windowHandle, _windowSource, ActualWidth, ActualHeight, 18);
     }
 
     private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
