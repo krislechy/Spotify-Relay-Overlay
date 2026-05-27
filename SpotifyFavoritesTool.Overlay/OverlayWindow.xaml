@@ -126,7 +126,7 @@
                              CornerRadius="12"
                              BaseColor="{StaticResource AppColor101512}"
                              IsLiquidEnabled="False"
-                             SurfaceOpacity="0.004"
+                             SurfaceOpacity="0.00013"
                              BorderBrush="{StaticResource AppBrush365142}"
                              BorderThickness="1"
                              SnapsToDevicePixels="True"
@@ -422,7 +422,7 @@
                                      BorderBrush="{StaticResource AppBrush32483C}"
                                      BorderThickness="1"
                                      IsLiquidEnabled="False"
-                                     SurfaceOpacity="0.005">
+                                     SurfaceOpacity="0.00017">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -750,7 +750,7 @@
                                   BorderBrush="{StaticResource AppBrush32483C}"
                                   BorderThickness="1"
                                   IsLiquidEnabled="False"
-                                  SurfaceOpacity="0.005">
+                                  SurfaceOpacity="0.00017">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
